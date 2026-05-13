@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/theatre_nearby_banner.dart';
+import 'package:prime_tickets/features/theatre/presentation/pages/theatre_page.dart';
 
 import '../widgets/home_header.dart';
 import '../widgets/home_search_bar.dart';
@@ -35,7 +37,7 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Latest Releases',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
                       ),
@@ -54,7 +56,7 @@ class HomePage extends StatelessWidget {
                   child: Text(
                     'Upcoming Releases',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
@@ -66,7 +68,7 @@ class HomePage extends StatelessWidget {
 
               MovieHorizontalList(),
 
-              SizedBox(height: 25),
+              SizedBox(height: 55),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Align(
@@ -74,13 +76,27 @@ class HomePage extends StatelessWidget {
                   child: Text(
                     'Explore',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
                   ),
                 ),
               ),
+              SizedBox(height: 15),
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: TheatreNearbyBanner(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const TheatrePage()),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 25),
             ],
           ),
         ),
