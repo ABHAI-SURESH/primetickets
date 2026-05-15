@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/search/presentation/pages/search_page.dart';
 
+import '../widgets/movie_filter_bar.dart';
 import '../widgets/movie_grid_card.dart';
 import '../widgets/movie_page_header.dart';
 
@@ -20,8 +21,23 @@ class Movie {
   });
 }
 
-class MoviesPage extends StatelessWidget {
+class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
+
+  @override
+  State<MoviesPage> createState() => _MoviesPageState();
+}
+
+class _MoviesPageState extends State<MoviesPage> {
+  int selectedFilter = 0;
+
+  final List<String> filters = [
+    'Filter',
+    'English',
+    'Malayalam',
+    'Tamil',
+    'New Releases',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +96,19 @@ class MoviesPage extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 8),
+
+            MovieFilterBar(
+              filters: filters,
+              selectedIndex: selectedFilter,
+              onTap: (index) {
+                setState(() {
+                  selectedFilter = index;
+                });
+              },
+            ),
+
+            const SizedBox(height: 8),
 
             /// 🔹 GRID
             Expanded(
