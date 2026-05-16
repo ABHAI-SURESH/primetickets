@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'core/theme/app_colors.dart';
 import 'features/navigation/presentation/pages/main_navigation_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const PrimeTicketsApp());
 }
