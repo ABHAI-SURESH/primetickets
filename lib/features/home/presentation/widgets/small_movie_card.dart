@@ -8,7 +8,7 @@ class SmallMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+      width: 150,
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),

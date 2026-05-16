@@ -15,7 +15,7 @@ class MovieHorizontalList extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 300,
+      height: 250,
 
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
