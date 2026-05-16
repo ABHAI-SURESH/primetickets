@@ -36,6 +36,7 @@ class _MoviesPageState extends State<MoviesPage> {
     'English',
     'Malayalam',
     'Tamil',
+    'Hindi',
     'New Releases',
   ];
 
@@ -65,7 +66,7 @@ class _MoviesPageState extends State<MoviesPage> {
       ),
       Movie(
         imagePath: 'assets/images/spiderman.jpg',
-        title: 'Spiderman far from homeyhujkyuiyui',
+        title: 'Spiderman far from home',
         language: 'Malayalam',
         certificate: 'UA13+',
         rating: 8.2,
@@ -76,6 +77,62 @@ class _MoviesPageState extends State<MoviesPage> {
         language: 'Malayalam',
         certificate: 'UA13+',
         rating: 8.2,
+      ),
+      Movie(
+        imagePath: 'assets/images/projecthailmary.jpeg',
+        title: 'Project Hail Mary',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 10.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/deadpool_wolverine.jpeg',
+        title: 'Deadpool and Wolverine',
+        language: 'English',
+        certificate: 'UA18+',
+        rating: 9.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/the_dark_knight.jpeg',
+        title: 'The Dark Knight',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 10.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/zootopia_2.jpeg',
+        title: 'Zootopia 2',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 8.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/f1_themovie.jpeg',
+        title: 'F1 The Movie',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 7.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/inception.jpeg',
+        title: 'Inception',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 6.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/topgun_maverik.jpeg',
+        title: 'Top Gun Maverik',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 10.0,
+      ),
+      Movie(
+        imagePath: 'assets/images/avatar_fire_and_ash.jpeg',
+        title: 'Avatar : Fire and Ash',
+        language: 'English',
+        certificate: 'UA13+',
+        rating: 10.0,
       ),
     ];
 

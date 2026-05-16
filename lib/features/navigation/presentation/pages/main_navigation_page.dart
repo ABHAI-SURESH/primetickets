@@ -9,13 +9,10 @@ class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({super.key});
 
   @override
-  State<MainNavigationPage> createState() =>
-      _MainNavigationPageState();
+  State<MainNavigationPage> createState() => _MainNavigationPageState();
 }
 
-class _MainNavigationPageState
-    extends State<MainNavigationPage> {
-
+class _MainNavigationPageState extends State<MainNavigationPage> {
   int selectedIndex = 0;
 
   final List<Widget> pages = [
@@ -30,65 +27,63 @@ class _MainNavigationPageState
     return Scaffold(
       extendBody: true,
 
-      body: IndexedStack(
-        index: selectedIndex,
-        children: pages,
-      ),
-
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-          right: 10,
-          bottom: 20,
-        ),
-        child: Container(
-          height: 65,
-
-          decoration: BoxDecoration(
-            color: Colors.white,
-
-            borderRadius: BorderRadius.circular(40),
-
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.08),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
-              ),
-            ],
+      body: Stack(
+        children: [
+          /// 🔹 MAIN CONTENT (FULL SCREEN)
+          Positioned.fill(
+            child: IndexedStack(index: selectedIndex, children: pages),
           ),
 
-          child: Row(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceAround,
+          /// 🔹 FLOATING NAV BAR
+          Positioned(
+            left: 10,
+            right: 10,
+            bottom: 20,
 
-            children: [
-              navItem(
-                icon: Icons.home_rounded,
-                label: 'Home',
-                index: 0,
+            child: Container(
+              height: 65,
+
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
+
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
               ),
 
-              navItem(
-                icon: Icons.movie_creation_outlined,
-                label: 'Movies',
-                index: 1,
-              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-              navItem(
-                icon: Icons.confirmation_number_outlined,
-                label: 'Bookings',
-                index: 2,
-              ),
+                children: [
+                  navItem(icon: Icons.home_rounded, label: 'Home', index: 0),
 
-              navItem(
-                icon: Icons.person_outline_rounded,
-                label: 'Profile',
-                index: 3,
+                  navItem(
+                    icon: Icons.movie_creation_outlined,
+                    label: 'Movies',
+                    index: 1,
+                  ),
+
+                  navItem(
+                    icon: Icons.confirmation_number_outlined,
+                    label: 'Bookings',
+                    index: 2,
+                  ),
+
+                  navItem(
+                    icon: Icons.person_outline_rounded,
+                    label: 'Profile',
+                    index: 3,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -98,9 +93,7 @@ class _MainNavigationPageState
     required String label,
     required int index,
   }) {
-
-    final bool isSelected =
-        selectedIndex == index;
+    final bool isSelected = selectedIndex == index;
 
     return GestureDetector(
       onTap: () {
@@ -114,27 +107,19 @@ class _MainNavigationPageState
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
 
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 10,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
 
         decoration: BoxDecoration(
-          color: isSelected
-              ? Colors.black
-              : Colors.transparent,
+          color: isSelected ? Colors.black : Colors.transparent,
 
-          borderRadius:
-              BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30),
         ),
 
         child: Row(
           children: [
             Icon(
               icon,
-              color: isSelected
-                  ? Colors.white
-                  : Colors.grey,
+              color: isSelected ? Colors.white : Colors.grey,
 
               size: 22,
             ),

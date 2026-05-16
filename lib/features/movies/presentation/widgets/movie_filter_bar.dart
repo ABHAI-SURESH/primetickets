@@ -15,11 +15,11 @@ class MovieFilterBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 44,
+      height: 34,
 
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
 
         itemCount: filters.length,
 
@@ -35,9 +35,9 @@ class MovieFilterBar extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
 
               decoration: BoxDecoration(
-                color: isSelected ? Colors.black : Colors.transparent,
+                color: Colors.transparent,
 
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
 
                 border: Border.all(
                   color: isSelected ? Colors.black : Colors.grey.shade400,
@@ -58,10 +58,15 @@ class MovieFilterBar extends StatelessWidget {
                     filters[index],
                     style: TextStyle(
                       fontSize: 13,
+                      height: 1.0,
                       fontWeight: FontWeight.w500,
-                      color: isSelected ? Colors.white : Colors.black,
+                      color: Colors.black,
                     ),
                   ),
+                  if (index == 0) ...[
+                    const SizedBox(width: 4),
+                    const Icon(Icons.keyboard_arrow_down_rounded, size: 18),
+                  ],
                 ],
               ),
             ),

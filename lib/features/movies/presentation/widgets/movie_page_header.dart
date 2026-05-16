@@ -28,7 +28,7 @@ class MoviePageHeader extends StatelessWidget {
 
               children: [
                 const Text(
-                  'Now Showing',
+                  'Only in Theatres',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                 ),
 
