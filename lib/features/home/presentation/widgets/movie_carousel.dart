@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'movie_card.dart';
 
 class MovieCarousel extends StatefulWidget {
   const MovieCarousel({super.key});
@@ -43,67 +44,43 @@ class _MovieCarouselState extends State<MovieCarousel> {
   @override
   Widget build(BuildContext context) {
     final currentIndex = currentPage.round() % movieImages.length;
+
     return Column(
       children: [
+        /// 🔥 FIXED PROPORTION (NO HEIGHT BUG)
         AspectRatio(
           aspectRatio: 0.9,
-          child: SizedBox(
-            height: 400,
 
-            child: PageView.builder(
-              controller: pageController,
+          child: PageView.builder(
+            controller: pageController,
 
-              itemBuilder: (context, index) {
-                final movieIndex = index % movieImages.length;
+            itemBuilder: (context, index) {
+              final movieIndex = index % movieImages.length;
 
-                /// DISTANCE FROM CENTER
-                final difference = (currentPage - index).abs();
+              final difference = (currentPage - index).abs();
 
-                /// SCALE
-                double scale = 1 - (difference * 0.18);
+              double scale = 1 - (difference * 0.18);
 
-                /// LIMIT MIN SCALE
-                if (scale < 0.75) {
-                  scale = 0.75;
-                }
+              if (scale < 0.75) {
+                scale = 0.75;
+              }
 
-                return Transform.scale(
-                  scale: scale,
+              return Transform.scale(
+                scale: scale,
 
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
 
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.14),
-
-                            blurRadius: 20,
-
-                            offset: const Offset(0, 10),
-                          ),
-                        ],
-                      ),
-
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(28),
-
-                        child: Image.asset(
-                          movieImages[movieIndex],
-
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+                  child: MovieCard(imageUrl: movieImages[movieIndex]),
+                ),
+              );
+            },
           ),
         ),
-        SizedBox(height: 14),
+
+        const SizedBox(height: 14),
+
+        /// 🔹 DOT INDICATOR
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
 
@@ -116,7 +93,6 @@ class _MovieCarouselState extends State<MovieCarousel> {
               margin: const EdgeInsets.symmetric(horizontal: 4),
 
               height: 8,
-
               width: isActive ? 24 : 8,
 
               decoration: BoxDecoration(
