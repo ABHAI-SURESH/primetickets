@@ -45,59 +45,62 @@ class _MovieCarouselState extends State<MovieCarousel> {
     final currentIndex = currentPage.round() % movieImages.length;
     return Column(
       children: [
-        SizedBox(
-          height: 400,
+        AspectRatio(
+          aspectRatio: 0.9,
+          child: SizedBox(
+            height: 400,
 
-          child: PageView.builder(
-            controller: pageController,
+            child: PageView.builder(
+              controller: pageController,
 
-            itemBuilder: (context, index) {
-              final movieIndex = index % movieImages.length;
+              itemBuilder: (context, index) {
+                final movieIndex = index % movieImages.length;
 
-              /// DISTANCE FROM CENTER
-              final difference = (currentPage - index).abs();
+                /// DISTANCE FROM CENTER
+                final difference = (currentPage - index).abs();
 
-              /// SCALE
-              double scale = 1 - (difference * 0.18);
+                /// SCALE
+                double scale = 1 - (difference * 0.18);
 
-              /// LIMIT MIN SCALE
-              if (scale < 0.75) {
-                scale = 0.75;
-              }
+                /// LIMIT MIN SCALE
+                if (scale < 0.75) {
+                  scale = 0.75;
+                }
 
-              return Transform.scale(
-                scale: scale,
+                return Transform.scale(
+                  scale: scale,
 
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(28),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(28),
 
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.14),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.14),
 
-                          blurRadius: 20,
+                            blurRadius: 20,
 
-                          offset: const Offset(0, 10),
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
+                      ),
+
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(28),
+
+                        child: Image.asset(
+                          movieImages[movieIndex],
+
+                          fit: BoxFit.cover,
                         ),
-                      ],
-                    ),
-
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(28),
-
-                      child: Image.asset(
-                        movieImages[movieIndex],
-
-                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
         SizedBox(height: 14),
