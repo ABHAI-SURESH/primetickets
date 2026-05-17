@@ -38,10 +38,10 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
           Positioned(
             left: 10,
             right: 10,
-            bottom: 20,
+            bottom: 15,
 
             child: Container(
-              height: 65,
+              height: 55,
 
               decoration: BoxDecoration(
                 color: Colors.white,

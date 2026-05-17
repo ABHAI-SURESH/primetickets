@@ -13,13 +13,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF8F9FB),
+      backgroundColor: const Color(0xFFF8F9FB),
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,12 +45,12 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              MovieCarousel(),
+              const MovieCarousel(),
 
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Align(
                   alignment: AlignmentGeometry.centerLeft,
                   child: Text(
@@ -64,13 +64,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
 
-              MovieHorizontalList(),
+              const MovieHorizontalList(),
 
-              SizedBox(height: 55),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const SizedBox(height: 55),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Align(
                   alignment: AlignmentGeometry.centerLeft,
                   child: Text(
@@ -83,10 +83,10 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
 
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TheatreNearbyBanner(
                   onTap: () {
                     Navigator.push(
@@ -96,7 +96,7 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
             ],
           ),
         ),
