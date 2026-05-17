@@ -4,22 +4,7 @@ import 'package:prime_tickets/features/search/presentation/pages/search_page.dar
 import '../widgets/movie_filter_bar.dart';
 import '../widgets/movie_grid_card.dart';
 import '../widgets/movie_page_header.dart';
-
-class Movie {
-  final String imagePath;
-  final String title;
-  final String language;
-  final String certificate;
-  final double rating;
-
-  Movie({
-    required this.imagePath,
-    required this.title,
-    required this.language,
-    required this.certificate,
-    required this.rating,
-  });
-}
+import '../../domain/models/movie.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
@@ -44,98 +29,177 @@ class _MoviesPageState extends State<MoviesPage> {
   Widget build(BuildContext context) {
     final List<Movie> movies = [
       Movie(
-        imagePath: 'assets/images/doomsday.jpg',
+        id: '1',
         title: 'Doomsday',
-        language: 'English',
+        imagePath: 'assets/images/doomsday.jpg',
+        genre: 'Action . Thriller',
+        duration: '2h 10m',
         certificate: 'UA16+',
-        rating: 8.5,
+        languages: ['English'],
+        rating: 8.5 / 10,
+        description: 'A deadly virus outbreak threatens humanity’s survival.',
+        bookedCount: 1800,
       ),
+
       Movie(
-        imagePath: 'assets/images/dune.jpg',
+        id: '2',
         title: 'Dune',
-        language: 'English',
+        imagePath: 'assets/images/dune.jpg',
+        genre: 'Sci-Fi . Adventure',
+        duration: '2h 35m',
         certificate: 'U',
+        languages: ['English', 'Hindi'],
         rating: 7.9,
+        description:
+            'A noble family becomes embroiled in a war for control over a desert planet.',
+        bookedCount: 2500,
       ),
+
       Movie(
-        imagePath: 'assets/images/infinity_war.jpg',
+        id: '3',
         title: 'Infinity War',
-        language: 'English',
+        imagePath: 'assets/images/infinity_war.jpg',
+        genre: 'Action . Sci-Fi',
+        duration: '2h 30m',
         certificate: 'UA13+',
+        languages: ['English', 'Hindi'],
         rating: 9.0,
+        description:
+            'As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.',
+        bookedCount: 5000,
       ),
+
       Movie(
+        id: '4',
+        title: 'Spiderman Far From Home',
         imagePath: 'assets/images/spiderman.jpg',
-        title: 'Spiderman far from home',
-        language: 'Malayalam',
+        genre: 'Superhero . Action',
+        duration: '2h 10m',
         certificate: 'UA13+',
+        languages: ['English', 'Malayalam'],
         rating: 8.2,
+        description:
+            'Peter Parker goes on a school trip and faces new threats.',
+        bookedCount: 2100,
       ),
+
       Movie(
-        imagePath: 'assets/images/spiderman.jpg',
+        id: '5',
         title: 'Spiderman',
-        language: 'Malayalam',
+        imagePath: 'assets/images/spiderman.jpg',
+        genre: 'Superhero',
+        duration: '2h 05m',
         certificate: 'UA13+',
+        languages: ['Malayalam'],
         rating: 8.2,
+        description: 'The origin story of Spider-Man.',
+        bookedCount: 1500,
       ),
+
       Movie(
-        imagePath: 'assets/images/projecthailmary.jpeg',
+        id: '6',
         title: 'Project Hail Mary',
-        language: 'English',
+        imagePath: 'assets/images/projecthailmary.jpeg',
+        genre: 'Sci-Fi',
+        duration: '2h 20m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 10.0,
+        description: 'A lone astronaut must save Earth from extinction.',
+        bookedCount: 3200,
       ),
+
       Movie(
-        imagePath: 'assets/images/deadpool_wolverine.jpeg',
+        id: '7',
         title: 'Deadpool and Wolverine',
-        language: 'English',
+        imagePath: 'assets/images/deadpool_wolverine.jpeg',
+        genre: 'Action . Comedy',
+        duration: '2h 05m',
         certificate: 'UA18+',
+        languages: ['English'],
         rating: 9.0,
+        description: 'Deadpool teams up with Wolverine in a chaotic adventure.',
+        bookedCount: 4000,
       ),
+
       Movie(
-        imagePath: 'assets/images/the_dark_knight.jpeg',
+        id: '8',
         title: 'The Dark Knight',
-        language: 'English',
+        imagePath: 'assets/images/the_dark_knight.jpeg',
+        genre: 'Crime . Action',
+        duration: '2h 32m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 10.0,
+        description: 'Batman faces his greatest enemy, the Joker.',
+        bookedCount: 8000,
       ),
+
       Movie(
-        imagePath: 'assets/images/zootopia_2.jpeg',
+        id: '9',
         title: 'Zootopia 2',
-        language: 'English',
+        imagePath: 'assets/images/zootopia_2.jpeg',
+        genre: 'Animation . Family',
+        duration: '1h 50m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 8.0,
+        description: 'The adventures in Zootopia continue with new mysteries.',
+        bookedCount: 1200,
       ),
+
       Movie(
-        imagePath: 'assets/images/f1_themovie.jpeg',
+        id: '10',
         title: 'F1 The Movie',
-        language: 'English',
+        imagePath: 'assets/images/f1_themovie.jpeg',
+        genre: 'Sports . Drama',
+        duration: '2h 15m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 7.0,
+        description: 'A high-speed journey into the world of Formula 1 racing.',
+        bookedCount: 900,
       ),
+
       Movie(
-        imagePath: 'assets/images/inception.jpeg',
+        id: '11',
         title: 'Inception',
-        language: 'English',
+        imagePath: 'assets/images/inception.jpeg',
+        genre: 'Sci-Fi . Thriller',
+        duration: '2h 28m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 6.0,
+        description: 'A thief enters dreams to steal secrets.',
+        bookedCount: 3000,
       ),
+
       Movie(
+        id: '12',
+        title: 'Top Gun Maverick',
         imagePath: 'assets/images/topgun_maverik.jpeg',
-        title: 'Top Gun Maverik',
-        language: 'English',
+        genre: 'Action . Drama',
+        duration: '2h 10m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 10.0,
+        description: 'Maverick returns to train a new generation of pilots.',
+        bookedCount: 6000,
       ),
+
       Movie(
+        id: '13',
+        title: 'Avatar: Fire and Ash',
         imagePath: 'assets/images/avatar_fire_and_ash.jpeg',
-        title: 'Avatar : Fire and Ash',
-        language: 'English',
+        genre: 'Fantasy . Sci-Fi',
+        duration: '2h 40m',
         certificate: 'UA13+',
+        languages: ['English'],
         rating: 10.0,
+        description: 'A new chapter unfolds in the world of Pandora.',
+        bookedCount: 7000,
       ),
     ];
-
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -184,13 +248,7 @@ class _MoviesPageState extends State<MoviesPage> {
                 itemBuilder: (context, index) {
                   final movie = movies[index];
 
-                  return MovieGridCard(
-                    imagePath: movie.imagePath,
-                    title: movie.title,
-                    language: movie.language,
-                    certificate: movie.certificate,
-                    rating: movie.rating,
-                  );
+                  return MovieGridCard(movie: movie);
                 },
               ),
             ),

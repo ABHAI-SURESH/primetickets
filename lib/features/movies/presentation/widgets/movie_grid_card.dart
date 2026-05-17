@@ -1,127 +1,127 @@
 import 'package:flutter/material.dart';
+import '../pages/movie_details_page.dart';
+import '../../domain/models/movie.dart';
 
 class MovieGridCard extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String language;
-  final String certificate;
-  final double rating;
+  final Movie movie;
 
-  const MovieGridCard({
-    super.key,
-    required this.imagePath,
-    required this.title,
-    required this.language,
-    required this.certificate,
-    required this.rating,
-  });
+  const MovieGridCard({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(18),
-      ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => MovieDetailsPage(movie: movie)),
+        );
+      },
 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// 🔹 POSTER
-          Expanded(
-            child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(18),
-              ),
-              child: Image.asset(
-                imagePath,
-                width: double.infinity,
-                fit: BoxFit.cover,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(18),
+        ),
+
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// 🔹 POSTER
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(18),
+                ),
+                child: Image.asset(
+                  movie.imagePath,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
 
-          /// 🔹 INFO SECTION
-          SizedBox(
-            height: 83,
-            child: Container(
-              padding: const EdgeInsets.all(12),
+            /// 🔹 INFO SECTION
+            SizedBox(
+              height: 83,
+              child: Container(
+                padding: const EdgeInsets.all(12),
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  /// TITLE + BOOKMARK
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /// TITLE
-                      Expanded(
-                        child: Text(
-                          title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            height: 1.2,
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    /// TITLE + BOOKMARK
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /// TITLE
+                        Expanded(
+                          child: Text(
+                            movie.title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              height: 1.2,
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
 
-                      const SizedBox(width: 8),
+                        const SizedBox(width: 8),
 
-                      /// BOOKMARK
-                      Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade700),
-                          borderRadius: BorderRadius.circular(8),
+                        /// BOOKMARK
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey.shade700),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Icon(
+                            Icons.bookmark_border,
+                            size: 16,
+                            color: Colors.white,
+                          ),
                         ),
-                        child: const Icon(
-                          Icons.bookmark_border,
-                          size: 16,
-                          color: Colors.white,
+                      ],
+                    ),
+
+                    const SizedBox(height: 6),
+
+                    /// SUBTITLE (CERTIFICATE + LANGUAGE)
+                    Row(
+                      children: [
+                        Text(
+                          '${movie.certificate} | ${movie.languages.first}',
+                          style: TextStyle(
+                            color: Colors.grey.shade400,
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 6),
+                        const Spacer(),
 
-                  /// SUBTITLE (CERTIFICATE + LANGUAGE)
-                  Row(
-                    children: [
-                      Text(
-                        '$certificate | $language',
-                        style: TextStyle(
-                          color: Colors.grey.shade400,
-                          fontSize: 12,
+                        const Icon(Icons.star, size: 14, color: Colors.amber),
+
+                        const SizedBox(width: 4),
+
+                        Text(
+                          movie.rating.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-
-                      const Spacer(),
-
-                      const Icon(Icons.star, size: 14, color: Colors.amber),
-
-                      const SizedBox(width: 4),
-
-                      Text(
-                        rating.toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
