@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/movie_details_page.dart';
 import '../../domain/models/movie.dart';
-import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
 
 class MovieGridCard extends StatelessWidget {
   final Movie movie;
@@ -94,7 +93,7 @@ class MovieGridCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '${movie.certificate} | ${movie.languages.first}',
+                          '${movie.certificate} | ${movie.languages.isNotEmpty ? movie.languages.first : ''}',
                           style: TextStyle(
                             color: Colors.grey.shade400,
                             fontSize: 12,
