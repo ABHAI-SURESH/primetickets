@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
 
 import 'small_movie_card.dart';
 
@@ -7,31 +8,22 @@ class MovieHorizontalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> movieImages = [
-      'assets/images/doomsday.jpg',
-      'assets/images/dune.jpg',
-      'assets/images/infinity_war.jpg',
-      'assets/images/spiderman.jpg',
-    ];
-
+    final movies = dummyMovies;
     return SizedBox(
       height: 250,
-
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-
         physics: const BouncingScrollPhysics(),
-
         padding: const EdgeInsets.symmetric(horizontal: 20),
 
-        itemCount: movieImages.length,
+        itemCount: movies.length,
 
-        separatorBuilder: (context, index) {
-          return const SizedBox(width: 16);
-        },
+        separatorBuilder: (_, __) => const SizedBox(width: 16),
 
         itemBuilder: (context, index) {
-          return SmallMovieCard(imagePath: movieImages[index]);
+          final movie = movies[index];
+
+          return SmallMovieCard(movie: movie);
         },
       ),
     );

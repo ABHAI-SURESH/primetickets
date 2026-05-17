@@ -128,7 +128,7 @@ class MovieDetailsPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Text(
-                '${movie.certificate}  .  ${movie.languages.first}  .  ${movie.duration}',
+                '${movie.certificate}  •  ${movie.languages.first}  •  ${movie.duration}',
                 style: const TextStyle(fontSize: 12),
               ),
             ),

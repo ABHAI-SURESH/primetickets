@@ -1,38 +1,48 @@
 import 'package:flutter/material.dart';
+import '../../../movies/presentation/pages/movie_details_page.dart';
+import '../../../movies/domain/models/movie.dart';
 
 class SmallMovieCard extends StatelessWidget {
-  final String imagePath;
+  final Movie movie;
 
-  const SmallMovieCard({super.key, required this.imagePath});
+  const SmallMovieCard({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => MovieDetailsPage(movie: movie)),
+        );
+      },
+      child: Container(
+        width: 150,
 
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
 
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.12),
 
-            blurRadius: 14,
+              blurRadius: 14,
 
-            offset: const Offset(0, 8),
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+
+          child: Image.asset(
+            movie.imagePath,
+
+            fit: BoxFit.cover,
+
+            filterQuality: FilterQuality.high,
           ),
-        ],
-      ),
-
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(22),
-
-        child: Image.asset(
-          imagePath,
-
-          fit: BoxFit.cover,
-
-          filterQuality: FilterQuality.high,
         ),
       ),
     );

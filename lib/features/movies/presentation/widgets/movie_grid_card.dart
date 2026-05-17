@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/movie_details_page.dart';
 import '../../domain/models/movie.dart';
+import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
 
 class MovieGridCard extends StatelessWidget {
   final Movie movie;
