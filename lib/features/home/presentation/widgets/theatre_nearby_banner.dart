@@ -11,40 +11,63 @@ class TheatreNearbyBanner extends StatelessWidget {
       onTap: onTap,
 
       child: Container(
-        height: 100,
+        height: 75,
         width: double.infinity,
 
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
 
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          color: const Color.fromARGB(255, 239, 239, 244),
+          borderRadius: BorderRadius.circular(18),
 
-          gradient: LinearGradient(
-            colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
 
         child: Row(
           children: [
-            /// LEFT TEXT
+            /// 🔹 TEXT
             Expanded(
-              child: Text(
-                'Theatres\nnear me',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  height: 1.3,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'THEATRE NEAR ME',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Icon(Icons.chevron_right),
+                    ],
+                  ),
+
+                  const SizedBox(height: 2),
+
+                  Text(
+                    'See what’s playing in cinemas nearby',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
+                  ),
+                ],
               ),
             ),
 
-            /// RIGHT IMAGE
+            /// 🔹 IMAGE
             Image.asset(
-              'assets/images/projector.jpg', // replace with your asset
+              'assets/images/theatre_banner.png',
               height: 80,
+              fit: BoxFit.contain,
             ),
           ],
         ),
