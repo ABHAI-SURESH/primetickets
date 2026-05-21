@@ -10,7 +10,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA16+',
     languages: ['English'],
     rating: 8.5,
-    description: 'A deadly virus outbreak threatens humanity’s survival.',
+    description:
+        'A catastrophic viral outbreak spreads rapidly across continents, collapsing governments and pushing humanity to the brink of extinction. As cities fall into chaos, a small group of scientists and survivors race against time to find a cure while battling both the infected and the breakdown of society itself. Trust becomes fragile, survival instincts take over, and every decision could mean life or death in a world spiraling toward doomsday.',
     bookedCount: 1800,
   ),
 
@@ -24,7 +25,7 @@ final List<Movie> dummyMovies = [
     languages: ['English', 'Hindi'],
     rating: 7.9,
     description:
-        'A noble family becomes embroiled in a war for control over a desert planet.',
+        'Set in the distant future, the story follows Paul Atreides, a gifted young man born into a great destiny beyond his understanding. His family takes control of Arrakis, the most dangerous planet in the universe and the only source of the valuable spice that powers space travel. As betrayal unfolds and war erupts, Paul must rise to lead, navigating political intrigue, prophecy, and survival in a harsh desert world filled with giant sandworms and ancient secrets.',
     bookedCount: 2500,
   ),
 
@@ -51,21 +52,9 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English', 'Malayalam'],
     rating: 8.2,
-    description: 'Peter Parker goes on a school trip and faces new threats.',
+    description:
+        'Following the events that changed the world forever, Peter Parker embarks on a school trip across Europe, hoping to leave behind his responsibilities as Spider-Man and live a normal teenage life. However, new threats emerge in the form of mysterious elemental creatures, forcing Peter to step up once again. Torn between duty and desire, he must decide what kind of hero he truly wants to become.',
     bookedCount: 2100,
-  ),
-
-  Movie(
-    id: '5',
-    title: 'Spiderman',
-    imagePath: 'assets/images/spiderman.jpg',
-    genre: 'Superhero',
-    duration: '2h 05m',
-    certificate: 'UA13+',
-    languages: ['Malayalam'],
-    rating: 8.2,
-    description: 'The origin story of Spider-Man.',
-    bookedCount: 1500,
   ),
 
   Movie(
@@ -77,7 +66,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 10,
-    description: 'A lone astronaut must save Earth from extinction.',
+    description:
+        'A lone astronaut awakens aboard a spacecraft with no memory of who he is or how he got there. As fragments of his past slowly return, he realizes he is humanity’s last hope in a desperate mission to save Earth from an extinction-level threat. With limited resources, unexpected allies, and overwhelming odds, he must rely on science, courage, and determination to complete a mission that could determine the fate of all life.',
     bookedCount: 3200,
   ),
 
@@ -90,7 +80,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA18+',
     languages: ['English'],
     rating: 9.0,
-    description: 'Deadpool teams up with Wolverine in a chaotic adventure.',
+    description:
+        'When a chaotic mercenary with a twisted sense of humor crosses paths with a gruff, battle-hardened mutant, the result is an explosive and unpredictable partnership. Forced to work together against a powerful new enemy, Deadpool and Wolverine clash in personality but complement each other in combat. Packed with brutal action, sharp wit, and unexpected emotional moments, their journey pushes both heroes to their limits.',
     bookedCount: 4000,
   ),
 
@@ -103,7 +94,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 10.0,
-    description: 'Batman faces his greatest enemy, the Joker.',
+    description:
+        'As Gotham faces a new wave of organized crime, Batman steps up to protect the city alongside allies like Commissioner Gordon and Harvey Dent. However, the emergence of the Joker — a criminal mastermind driven by chaos — pushes Gotham into anarchy. As moral lines blur and sacrifices become inevitable, Batman must confront what it truly means to be a hero in a world where order and justice are constantly under threat.',
     bookedCount: 8000,
   ),
 
@@ -116,7 +108,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 8.0,
-    description: 'The adventures in Zootopia continue with new mysteries.',
+    description:
+        'In the ever-evolving city of Zootopia, where animals of all kinds coexist, new challenges arise that threaten the harmony of the metropolis. Judy Hopps and Nick Wilde reunite to investigate a mysterious case that leads them deep into uncharted parts of the city. As secrets unfold and tensions rise, they must rely on trust, teamwork, and courage to protect the fragile unity of their world.',
     bookedCount: 1200,
   ),
 
@@ -129,7 +122,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 7.0,
-    description: 'A high-speed journey into the world of Formula 1 racing.',
+    description:
+        'Set in the high-stakes world of Formula 1 racing, the story follows a talented but troubled driver fighting to prove himself on the global stage. With intense rivalries, team politics, and the constant danger of the sport, every race becomes a battle not just for victory, but for redemption. As the season unfolds, he must confront his past, push beyond his limits, and chase glory at unimaginable speeds.',
     bookedCount: 900,
   ),
 
@@ -142,7 +136,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 6.0,
-    description: 'A thief enters dreams to steal secrets.',
+    description:
+        'A skilled thief who specializes in extracting secrets from within the subconscious is given a seemingly impossible task: to plant an idea into someone’s mind. As he assembles a team to dive deep into layered dream worlds, the mission becomes increasingly dangerous. Haunted by his past and unable to distinguish reality from illusion, he must complete the job before time runs out — or risk losing everything.',
     bookedCount: 3000,
   ),
 
@@ -155,7 +150,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 10.0,
-    description: 'Maverick returns to train a new generation of pilots.',
+    description:
+        'After decades of service, Pete “Maverick” Mitchell remains one of the Navy’s top aviators, refusing to be grounded despite the changing world around him. Tasked with training a new generation of elite pilots for a dangerous mission, Maverick must confront his past, his fears, and the legacy he leaves behind. As the stakes rise, the mission demands not just skill, but sacrifice.',
     bookedCount: 6000,
   ),
 
@@ -168,7 +164,8 @@ final List<Movie> dummyMovies = [
     certificate: 'UA13+',
     languages: ['English'],
     rating: 10.0,
-    description: 'A new chapter unfolds in the world of Pandora.',
+    description:
+        'On the vibrant world of Pandora, new conflicts emerge as different clans face threats that could change their way of life forever. As tensions rise between nature and expanding forces, alliances are tested and new leaders emerge. With breathtaking landscapes and powerful emotions, the story explores survival, unity, and the fight to protect a world worth saving.',
     bookedCount: 7000,
   ),
 ];

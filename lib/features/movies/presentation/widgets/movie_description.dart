@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 
 class MovieDescription extends StatefulWidget {
   final String description;
@@ -16,7 +15,7 @@ class _MovieDescriptionState extends State<MovieDescription> {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
-      color: Colors.grey.shade700,
+      color: Colors.white.withOpacity(0.85),
       fontSize: 14,
       height: 1.4,
     );
@@ -27,7 +26,7 @@ class _MovieDescriptionState extends State<MovieDescription> {
 
         final tp = TextPainter(
           text: textSpan,
-          maxLines: 3,
+          maxLines: 4,
           textDirection: TextDirection.ltr,
         );
 
@@ -35,44 +34,42 @@ class _MovieDescriptionState extends State<MovieDescription> {
 
         final isOverflowing = tp.didExceedMaxLines;
 
-        if (!isOverflowing) {
-          /// 🔹 SHORT TEXT → NORMAL
-          return Text(widget.description, style: textStyle);
-        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// 🔹 DESCRIPTION TEXT
+            Text(
+              widget.description,
+              maxLines: isExpanded ? null : 4,
+              overflow: isExpanded
+                  ? TextOverflow.visible
+                  : TextOverflow.ellipsis,
+              style: textStyle,
+            ),
 
-        /// 🔹 LONG TEXT → INLINE "MORE"
-        return RichText(
-          text: TextSpan(
-            style: textStyle,
-            children: [
-              TextSpan(
-                text: isExpanded
-                    ? widget.description
-                    : _truncateText(widget.description, 120),
-              ),
+            /// 🔹 READ MORE / LESS
+            if (isOverflowing) ...[
+              const SizedBox(height: 6),
 
-              TextSpan(
-                text: isExpanded ? '  Read less' : ' Read more',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Text(
+                  isExpanded ? 'Read less' : 'Read more',
+                  style: const TextStyle(
+                    color: Colors.white, // ✅ white
+                    fontSize: 16, // ✅ bigger
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  },
               ),
             ],
-          ),
+          ],
         );
       },
     );
-  }
-
-  String _truncateText(String text, int maxLength) {
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '...';
   }
 }

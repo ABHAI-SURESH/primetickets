@@ -29,16 +29,16 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
 
       body: Stack(
         children: [
-          /// 🔹 MAIN CONTENT (FULL SCREEN)
+          ///MAIN CONTENT (FULL SCREEN)
           Positioned.fill(
             child: IndexedStack(index: selectedIndex, children: pages),
           ),
 
-          /// 🔹 FLOATING NAV BAR
+          ///FLOATING NAV BAR
           Positioned(
             left: 10,
             right: 10,
-            bottom: 15,
+            bottom: 12,
 
             child: Container(
               height: 55,
