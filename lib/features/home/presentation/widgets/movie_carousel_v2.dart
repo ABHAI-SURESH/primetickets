@@ -1,6 +1,5 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'movie_card.dart'; // Make sure to import your new card
+import 'movie_card.dart';
 
 class MovieCarousel extends StatefulWidget {
   const MovieCarousel({super.key});
@@ -11,24 +10,28 @@ class MovieCarousel extends StatefulWidget {
 
 class _MovieCarouselState extends State<MovieCarousel> {
   late final PageController pageController;
-  double currentPage = 0.0;
+
+  double currentPage = 1000;
 
   final List<String> movieImages = [
     'assets/images/doomsday.jpg',
     'assets/images/dune.jpg',
     'assets/images/infinity_war.jpg',
     'assets/images/spiderman.jpg',
+    'assets/images/f1_themovie.jpeg',
   ];
 
   @override
   void initState() {
     super.initState();
-    // 0.6 viewportFraction pulls the invisible gesture targets closer
-    pageController = PageController(viewportFraction: 0.6, initialPage: 0);
+
+    // viewportFraction controls swipe sensitivity here, not visual layout.
+    // 0.55 ensures one swipe naturally snaps to the next card.
+    pageController = PageController(viewportFraction: 0.55, initialPage: 1000);
 
     pageController.addListener(() {
       setState(() {
-        currentPage = pageController.page ?? 0;
+        currentPage = pageController.page ?? 1000;
       });
     });
   }
@@ -41,27 +44,91 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final currentIndex = currentPage.round(); // For your dots indicator
+    final currentIndex = currentPage.round() % movieImages.length;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
-        SizedBox(
-          height: 400,
+        /// 🔥 FIXED PROPORTION (NO HEIGHT BUG)
+        AspectRatio(
+          aspectRatio: 0.9,
           child: Stack(
             alignment: Alignment.center,
             children: [
-              // 1. VISUAL LAYER (The manually sorted stack)
-              ..._buildStackedCards(),
+              // 1. VISUAL LAYER (Handles Z-index, Overlap, Scale, Dimming)
+              AnimatedBuilder(
+                animation: pageController,
+                builder: (context, child) {
+                  double page = pageController.hasClients
+                      ? (pageController.page ?? 1000)
+                      : 1000;
 
-              // 2. GESTURE LAYER (The transparent PageView)
+                  // Only render the center item and its immediate neighbors to save memory
+                  List<int> visibleIndices = [
+                    page.floor() - 2,
+                    page.floor() - 1,
+                    page.floor(),
+                    page.floor() + 1,
+                    page.floor() + 2,
+                  ];
+
+                  // 🔥 CRITICAL FIX: Sort by distance from center descending.
+                  // This forces the cards furthest away to paint first (in the back)
+                  // and the center card to paint last (tucked on top of everything).
+                  visibleIndices.sort((a, b) {
+                    return (page - b).abs().compareTo((page - a).abs());
+                  });
+
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: visibleIndices.map((index) {
+                      final movieIndex = (index % movieImages.length).abs();
+                      final difference = page - index;
+                      final absDifference = difference.abs();
+
+                      // Scale: Center is 1.0, side cards shrink to 0.75
+                      double scale = (1 - (absDifference * 0.15)).clamp(
+                        0.75,
+                        1.0,
+                      );
+
+                      // Overlap Translation: Pulls side cards inward underneath the center card.
+                      // Adjust 0.35 to control exactly how much they peek out.
+                      // Lowering this value (e.g., to 0.26) pulls the side cards closer to the center.
+                      // Try values between 0.24 and 0.30 to find your exact preference.
+                      double translateX = -difference * (screenWidth * 0.12);
+
+                      return Transform.translate(
+                        offset: Offset(translateX, 0),
+                        child: Transform.scale(
+                          scale: scale,
+                          child: SizedBox(
+                            width:
+                                screenWidth *
+                                0.65, // Keeps the card width consistent
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  MovieCard(imageUrl: movieImages[movieIndex]),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
+
+              // 2. GESTURE LAYER (Invisible PageView to handle swiping)
               PageView.builder(
                 controller: pageController,
-                itemCount: movieImages.length,
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return Container(
-                    color: Colors.transparent, // Invisible swipe targets
-                  );
+                  return const SizedBox.expand(); // Completely transparent touch target
                 },
               ),
             ],
@@ -70,7 +137,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
         const SizedBox(height: 14),
 
-        // YOUR ORIGINAL DOTS INDICATOR
+        /// 🔹 DOT INDICATOR
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(movieImages.length, (index) {
@@ -82,9 +149,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
               height: 8,
               width: isActive ? 24 : 8,
               decoration: BoxDecoration(
-                color: isActive
-                    ? Colors.white
-                    : Colors.grey.shade600, // Adjusted for dark theme
+                color: isActive ? Colors.white : Colors.grey.shade700,
                 borderRadius: BorderRadius.circular(20),
               ),
             );
@@ -92,44 +157,5 @@ class _MovieCarouselState extends State<MovieCarousel> {
         ),
       ],
     );
-  }
-
-  List<Widget> _buildStackedCards() {
-    // 1. Create a list of indices
-    List<int> sortedIndexes = List.generate(movieImages.length, (i) => i);
-
-    // 2. Sort indices so the card furthest from the center is drawn FIRST (at the back)
-    sortedIndexes.sort((a, b) {
-      double distA = (a - currentPage).abs();
-      double distB = (b - currentPage).abs();
-      return distB.compareTo(distA);
-    });
-
-    return sortedIndexes.map((index) {
-      // Distance from center (0 is center, 1 is one card away)
-      double offset = index - currentPage;
-      double absOffset = offset.abs();
-
-      // THE MAGIC MATH
-      // Scale: Shrink cards that are further away
-      double scale = math.max(0.75, 1 - absOffset * 0.18);
-
-      // Translate: Pull the side cards behind the center card
-      double translateX = offset * 120; // Tweak this number to change overlap
-
-      // Opacity: Slightly fade out the cards in the back
-      double opacity = math.max(0.3, 1 - absOffset * 0.5);
-
-      return Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.identity()
-          ..translate(translateX, 0, 0)
-          ..scale(scale),
-        child: Opacity(
-          opacity: opacity,
-          child: MovieCard(imageUrl: movieImages[index]), // Using your widget!
-        ),
-      );
-    }).toList();
   }
 }
