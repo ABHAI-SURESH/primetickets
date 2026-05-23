@@ -1,3 +1,5 @@
+import 'package:prime_tickets/features/movies/domain/models/person.dart';
+
 class Movie {
   final String id;
 
@@ -15,6 +17,8 @@ class Movie {
   final String description;
 
   final int bookedCount;
+  final List<Person> cast;
+  final List<Person> crew;
 
   Movie({
     required this.id,
@@ -26,6 +30,8 @@ class Movie {
     required this.languages,
     required this.rating,
     required this.description,
+    required this.cast,
+    required this.crew,
     this.bookedCount = 0,
   });
 

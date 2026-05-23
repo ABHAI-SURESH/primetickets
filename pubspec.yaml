@@ -63,6 +63,9 @@ flutter_launcher_icons:
 flutter:
   assets:
   - assets/images/
+  - assets/images/movies/
+  - assets/images/cast/
+  - assets/images/crew/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

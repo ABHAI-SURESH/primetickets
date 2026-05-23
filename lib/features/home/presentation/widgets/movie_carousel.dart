@@ -14,10 +14,10 @@ class _MovieCarouselState extends State<MovieCarousel> {
   double currentPage = 0;
 
   final List<String> movieImages = [
-    'assets/images/doomsday.jpg',
-    'assets/images/dune.jpg',
-    'assets/images/infinity_war.jpg',
-    'assets/images/spiderman.jpg',
+    'assets/images/movies/doomsday.jpg',
+    'assets/images/movies/dune.jpg',
+    'assets/images/movies/infinity_war.jpg',
+    'assets/images/movies/spiderman.jpg',
   ];
 
   @override

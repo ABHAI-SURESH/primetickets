@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_background.dart';
+import 'package:prime_tickets/features/movies/presentation/widgets/movie_people_section.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_genre_rating.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_meta_info.dart';
-import '../widgets/movie_poster_card.dart';
-import '../../domain/models/movie.dart';
-import '../widgets/movie_description.dart';
+import 'package:prime_tickets/features/movies/presentation/widgets/movie_poster_card.dart';
+import 'package:prime_tickets/features/movies/domain/models/movie.dart';
+import 'package:prime_tickets/features/movies/presentation/widgets/movie_description.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   final Movie movie;
@@ -16,10 +17,10 @@ class MovieDetailsPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          /// 🔹 BACKGROUND (ONLY ONCE)
+          ///BACKGROUND (ONLY ONCE)
           MovieBackground(imagePath: movie.imagePath),
 
-          /// 🔹 CONTENT
+          ///CONTENT
           SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -27,7 +28,7 @@ class MovieDetailsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// 🔹 BACK BUTTON
+                  /// BACK BUTTON
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -86,13 +87,21 @@ class MovieDetailsPage extends StatelessWidget {
 
                   const SizedBox(height: 20),
 
-                  /// 🔹 DESCRIPTION
+                  ///DESCRIPTION
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MovieDescription(description: movie.description),
                   ),
 
                   const SizedBox(height: 20),
+
+                  ///CAST SECTION
+                  PeopleSection(title: 'Cast', people: movie.cast),
+
+                  const SizedBox(height: 8),
+
+                  ///CREW SECTION
+                  PeopleSection(title: 'Crew', people: movie.crew),
                 ],
               ),
             ),
