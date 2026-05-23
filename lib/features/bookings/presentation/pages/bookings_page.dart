@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/bookings/data/dummy_booking.dart';
 
-import '../models/booking.dart';
 import '../widgets/booking_ticket_card.dart';
 
 class BookingsPage extends StatelessWidget {
@@ -8,29 +8,7 @@ class BookingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Booking> bookings = [
-      Booking(
-        movieName: 'Dune',
-        language: 'English',
-        imagePath: 'assets/images/dune.jpg',
-        theatreName: 'PVR Trivandrum',
-        showDateTime: DateTime.now().add(const Duration(hours: 2)),
-        ticketCount: 2,
-        seatType: 'Gold',
-        seats: ['A1', 'A2'],
-      ),
-
-      Booking(
-        movieName: 'Spiderman',
-        language: 'Malayalam',
-        imagePath: 'assets/images/spiderman.jpg',
-        theatreName: 'Aries Plex',
-        showDateTime: DateTime.now().add(const Duration(days: 1)),
-        ticketCount: 3,
-        seatType: 'Silver',
-        seats: ['B3', 'B4', 'B5'],
-      ),
-    ];
+    final bookings = dummyBookings;
 
     /// SORT (NEWEST FIRST)
     bookings.sort((a, b) => b.showDateTime.compareTo(a.showDateTime));

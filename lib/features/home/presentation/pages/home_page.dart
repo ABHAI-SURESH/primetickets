@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/bookings/data/dummy_booking.dart';
+import 'package:prime_tickets/features/bookings/presentation/models/booking.dart';
+import 'package:prime_tickets/features/bookings/presentation/widgets/booking_ticket_card.dart';
 import 'package:prime_tickets/features/home/presentation/widgets/theatre_nearby_banner.dart';
 import 'package:prime_tickets/features/theatre/presentation/pages/theatre_page.dart';
 
@@ -9,9 +12,23 @@ import '../widgets/movie_horizontal_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  Booking? getLatestActiveBooking(List<Booking> bookings) {
+    final now = DateTime.now();
+
+    final activeBookings = bookings
+        .where((b) => b.showDateTime.isAfter(now))
+        .toList();
+
+    if (activeBookings.isEmpty) return null;
+
+    activeBookings.sort((a, b) => a.showDateTime.compareTo(b.showDateTime));
+
+    return activeBookings.first;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final booking = getLatestActiveBooking(dummyBookings);
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FB),
       body: SafeArea(
@@ -19,22 +36,29 @@ class HomePage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
 
-                    HomeHeader(),
+                    const HomeHeader(),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
-                    HomeSearchBar(),
+                    const HomeSearchBar(),
 
-                    SizedBox(height: 20),
+                    const SizedBox(height: 8),
 
-                    Text(
+                    ///SHOW ONLY IF EXISTS
+                    if (booking != null) ...[
+                      BookingTicketCard(booking: booking),
+
+                      const SizedBox(height: 8),
+                    ],
+
+                    const Text(
                       'Latest Releases',
                       style: TextStyle(
                         fontSize: 20,
