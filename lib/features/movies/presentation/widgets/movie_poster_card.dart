@@ -15,7 +15,7 @@ class MoviePosterCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Container(
-              width: 390,
+              width: double.infinity,
               height: 310,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

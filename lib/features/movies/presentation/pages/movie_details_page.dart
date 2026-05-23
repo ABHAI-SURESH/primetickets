@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_background.dart';
+import 'package:prime_tickets/features/movies/presentation/widgets/movie_book_tickets_button.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_people_section.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_genre_rating.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_meta_info.dart';
@@ -98,15 +99,24 @@ class MovieDetailsPage extends StatelessWidget {
                   ///CAST SECTION
                   PeopleSection(title: 'Cast', people: movie.cast),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
 
                   ///CREW SECTION
                   PeopleSection(title: 'Crew', people: movie.crew),
+
+                  const SizedBox(height: 4),
                 ],
               ),
             ),
           ),
         ],
+      ),
+
+      ///BOOK TICKETS BUTTON
+      bottomNavigationBar: BookTicketButton(
+        onTap: () {
+          print("Book Tickets clicked");
+        },
       ),
     );
   }
