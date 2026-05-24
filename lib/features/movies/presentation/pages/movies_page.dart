@@ -33,7 +33,7 @@ class _MoviesPageState extends State<MoviesPage> {
       body: SafeArea(
         child: Column(
           children: [
-            /// 🔹 HEADER
+            /// HEADER
             MoviePageHeader(
               location: 'Trivandrum',
               movieCount: movies.length,

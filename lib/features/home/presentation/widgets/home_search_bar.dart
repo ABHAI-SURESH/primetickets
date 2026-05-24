@@ -16,7 +16,7 @@ class HomeSearchBar extends StatelessWidget {
       },
 
       child: Container(
-        height: 55,
+        height: 50,
 
         padding: const EdgeInsets.symmetric(horizontal: 16),
 
