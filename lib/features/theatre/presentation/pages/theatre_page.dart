@@ -120,7 +120,7 @@ class _TheatrePageState extends State<TheatrePage> {
             fontWeight: FontWeight.w400,
             color: Colors.grey,
           ),
-          hintText: "Search by theatre or area",
+          hintText: "Search by cinema or area",
           prefixIcon: Icon(Icons.search),
           border: InputBorder.none,
         ),
