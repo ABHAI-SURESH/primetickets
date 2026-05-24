@@ -55,10 +55,10 @@ class _TheatrePageState extends State<TheatrePage> {
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: const Text(
-            "Theatres near you",
+            "Cinemas",
             style: TextStyle(
               fontSize: 18,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w300,
               color: Colors.black,
             ),
           ),

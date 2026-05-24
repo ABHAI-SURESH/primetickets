@@ -40,10 +40,10 @@ class TheatreNearbyBanner extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'THEATRE NEAR ME',
+                        'CINEMAS NEAR ME',
                         style: const TextStyle(
                           fontSize: 15,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                           color: Colors.black,
                         ),
                       ),
