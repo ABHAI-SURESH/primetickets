@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/bookmarks/presentation/pages/bookmarks_page.dart';
 import 'package:prime_tickets/features/location/presentation/pages/location_page.dart';
 
-class HomeHeader extends StatelessWidget {
+class HomeHeader extends StatefulWidget {
   const HomeHeader({super.key});
+
+  @override
+  State<HomeHeader> createState() => _HomeHeaderState();
+}
+
+class _HomeHeaderState extends State<HomeHeader> {
+  String currentCity = "Select Location";
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +18,16 @@ class HomeHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: () {
-            Navigator.push(
+          onTap: () async {
+            final selectedCity = await Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const LocationPage()),
             );
+            if (selectedCity != null) {
+              setState(() {
+                currentCity = selectedCity;
+              });
+            }
           },
           child: Row(
             children: [
@@ -40,7 +52,7 @@ class HomeHeader extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Trivandrum',
+                        currentCity,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
