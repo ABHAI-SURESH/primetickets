@@ -1,44 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/bookmarks/presentation/pages/bookmarks_page.dart';
-import 'package:prime_tickets/features/location/presentation/pages/location_page.dart';
 
-class HomeHeader extends StatefulWidget {
-  const HomeHeader({super.key});
+class HomeHeader extends StatelessWidget {
+  final String currentCity;
+  final VoidCallback onTapLocation;
 
-  @override
-  State<HomeHeader> createState() => _HomeHeaderState();
-}
-
-class _HomeHeaderState extends State<HomeHeader> {
-  String currentCity = "Select Location";
+  const HomeHeader({
+    super.key,
+    required this.currentCity,
+    required this.onTapLocation,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        ///LOCATION SECTION
         GestureDetector(
-          onTap: () async {
-            final selectedCity = await Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const LocationPage()),
-            );
-            if (selectedCity != null) {
-              setState(() {
-                currentCity = selectedCity;
-              });
-            }
-          },
+          onTap: onTapLocation, //controlled by HomePage
           child: Row(
             children: [
-              Icon(Icons.location_on_outlined, size: 22, color: Colors.black),
+              const Icon(
+                Icons.location_on_outlined,
+                size: 22,
+                color: Colors.black,
+              ),
 
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Current Location',
                     style: TextStyle(
                       fontSize: 12,
@@ -47,22 +41,22 @@ class _HomeHeaderState extends State<HomeHeader> {
                     ),
                   ),
 
-                  SizedBox(height: 2),
+                  const SizedBox(height: 2),
 
                   Row(
                     children: [
                       Text(
                         currentCity,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(width: 2),
+                      const SizedBox(width: 2),
                       Transform.translate(
-                        offset: Offset(0, 2),
-                        child: Icon(
+                        offset: const Offset(0, 2),
+                        child: const Icon(
                           Icons.keyboard_arrow_down_rounded,
                           size: 20,
                           color: Colors.grey,
@@ -76,6 +70,7 @@ class _HomeHeaderState extends State<HomeHeader> {
           ),
         ),
 
+        /// BOOKMARK BUTTON
         GestureDetector(
           onTap: () {
             Navigator.push(
@@ -94,11 +89,15 @@ class _HomeHeaderState extends State<HomeHeader> {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.04),
                   blurRadius: 10,
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
-            child: Icon(Icons.bookmark_border, size: 20, color: Colors.black),
+            child: const Icon(
+              Icons.bookmark_border,
+              size: 20,
+              color: Colors.black,
+            ),
           ),
         ),
       ],

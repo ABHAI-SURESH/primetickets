@@ -1,17 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:prime_tickets/features/location/presentation/pages/location_page.dart';
 import 'package:prime_tickets/features/bookings/data/dummy_booking.dart';
 import 'package:prime_tickets/features/bookings/presentation/models/booking.dart';
 import 'package:prime_tickets/features/bookings/presentation/widgets/booking_ticket_card.dart';
 import 'package:prime_tickets/features/home/presentation/widgets/theatre_nearby_banner.dart';
 import 'package:prime_tickets/features/theatre/presentation/pages/theatre_page.dart';
 
-import '../widgets/home_header.dart';
-import '../widgets/home_search_bar.dart';
-import '../widgets/movie_carousel.dart';
-import '../widgets/movie_horizontal_list.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/home_header.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/home_search_bar.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/movie_carousel.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/movie_horizontal_list.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String currentCity = "Select Location";
+
+  ///LOCATION FUNCTION
+  void _openLocationPage() async {
+    final selectedCity = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const LocationPage()),
+    );
+
+    if (selectedCity != null) {
+      setState(() {
+        currentCity = selectedCity;
+      });
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('selected_city', selectedCity);
+    }
+  }
+
   Booking? getLatestActiveBooking(List<Booking> bookings) {
     final now = DateTime.now();
 
@@ -43,7 +70,10 @@ class HomePage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 8),
 
-                    const HomeHeader(),
+                    HomeHeader(
+                      currentCity: currentCity,
+                      onTapLocation: _openLocationPage,
+                    ),
 
                     const SizedBox(height: 20),
 
@@ -126,5 +156,22 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCity();
+  }
+
+  void _loadSavedCity() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedCity = prefs.getString('selected_city');
+
+    if (savedCity != null) {
+      setState(() {
+        currentCity = savedCity;
+      });
+    }
   }
 }
