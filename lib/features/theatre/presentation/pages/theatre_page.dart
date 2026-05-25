@@ -1,31 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
 import '../../data/dummy_theatres.dart';
 import '../widgets/theatre_card.dart';
 
 class TheatrePage extends StatefulWidget {
-  const TheatrePage({super.key});
+  final String selectedCity;
+
+  const TheatrePage({super.key, required this.selectedCity});
 
   @override
   State<TheatrePage> createState() => _TheatrePageState();
 }
 
 class _TheatrePageState extends State<TheatrePage> {
-  List theatres = dummyTheatres; // THEATRE LIST
-  List filteredTheatres = [];
+  List<Theatre> allCityTheatres = []; // base (city filtered)
+  List<Theatre> filteredTheatres = []; // final (after search)
 
   @override
   void initState() {
     super.initState();
-    filteredTheatres = theatres;
+    final city = widget.selectedCity.toLowerCase();
+
+    allCityTheatres = dummyTheatres.where((theatre) {
+      return theatre.address.toLowerCase().contains(city);
+    }).toList();
+    filteredTheatres = allCityTheatres;
   }
 
   void _filterTheatres(String query) {
-    final results = theatres.where((theatre) {
-      final name = theatre.name.toLowerCase();
-      final place = theatre.place.toLowerCase();
+    final q = query.toLowerCase();
 
-      return name.contains(query.toLowerCase()) ||
-          place.contains(query.toLowerCase());
+    if (q.isEmpty) {
+      setState(() {
+        filteredTheatres = allCityTheatres;
+      });
+      return;
+    }
+    final results = allCityTheatres.where((theatre) {
+      final name = theatre.name.toLowerCase();
+      final address = theatre.address.toLowerCase();
+
+      return name.contains(q) || address.contains(q);
     }).toList();
 
     setState(() {

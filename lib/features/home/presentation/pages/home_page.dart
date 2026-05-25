@@ -24,6 +24,13 @@ class _HomePageState extends State<HomePage> {
 
   ///LOCATION FUNCTION
   void _openLocationPage() async {
+    if (currentCity == "Select Location") {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please select a location first")),
+      );
+      return;
+    }
+
     final selectedCity = await Navigator.push(
       context,
       MaterialPageRoute(builder: (_) => const LocationPage()),
@@ -145,7 +152,9 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const TheatrePage()),
+                      MaterialPageRoute(
+                        builder: (_) => TheatrePage(selectedCity: currentCity),
+                      ),
                     );
                   },
                 ),

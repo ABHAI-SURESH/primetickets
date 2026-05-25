@@ -41,8 +41,8 @@ class PopularCityGrid extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(city.image, height: 40),
-                const SizedBox(height: 10),
+                Image.asset(city.image, height: 80),
+                const SizedBox(height: 4),
                 Text(city.name),
               ],
             ),
