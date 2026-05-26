@@ -58,10 +58,10 @@ class _MoviesPageState extends State<MoviesPage> {
 
             const SizedBox(height: 8),
 
-            /// 🔹 GRID
+            ///GRID
             Expanded(
               child: GridView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 100),
 
                 itemCount: movies.length,
 
