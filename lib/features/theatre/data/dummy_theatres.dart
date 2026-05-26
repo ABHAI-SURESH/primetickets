@@ -1,5 +1,9 @@
 import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
 
+const basicFacilities = ["mobile_ticket"];
+const standardFacilities = ["mobile_ticket", "parking", "ac"];
+const premiumFacilities = ["mobile_ticket", "parking", "food", "ac", "payment"];
+
 final List<Theatre> dummyTheatres = [
   Theatre(
     id: '1',
@@ -8,8 +12,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Lulu Mall, Akkulam Bridge Road, Anayara Post, Trivandrum, Kerala',
     pincode: '695029',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '2',
     name: 'Aries Plex SL Cinemas',
@@ -18,8 +22,8 @@ final List<Theatre> dummyTheatres = [
         'Near Government Women and Children Hospital, Thampanoor, Trivandrum, Kerala',
     pincode: '695001',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '3',
     name: 'New Theatre',
@@ -28,8 +32,8 @@ final List<Theatre> dummyTheatres = [
         'Overbridge Road, Pulimoodu Junction, Thampanoor, Trivandrum, Kerala',
     pincode: '695001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '4',
     name: 'Sree Padmanabha Theatre',
@@ -38,8 +42,8 @@ final List<Theatre> dummyTheatres = [
         'Near Padmanabhaswamy Temple, Pazhavangadi, East Fort, Trivandrum, Kerala',
     pincode: '695023',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '5',
     name: 'Kairali Theatre',
@@ -48,8 +52,8 @@ final List<Theatre> dummyTheatres = [
         'Opposite Kerala State Transport Bus Stand, Thampanoor, Trivandrum, Kerala',
     pincode: '695001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '6',
     name: 'Kripa Cinemas',
@@ -57,8 +61,8 @@ final List<Theatre> dummyTheatres = [
     address: 'MG Road, Near Secretariat, Palayam, Trivandrum, Kerala',
     pincode: '695034',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '7',
     name: 'Dhanya Remya Theatre',
@@ -66,8 +70,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near Ayurveda College Junction, MG Road, Trivandrum, Kerala',
     pincode: '695001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '8',
     name: 'AJANTA Theatre',
@@ -75,8 +79,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Kesavadasapuram Junction, Pattom Road, Trivandrum, Kerala',
     pincode: '695004',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '9',
     name: 'Carnival Cinemas Greenfield',
@@ -85,8 +89,8 @@ final List<Theatre> dummyTheatres = [
         'Greenfield International Stadium Campus, Karyavattom, Trivandrum, Kerala',
     pincode: '695581',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '10',
     name: 'IMAX Theatre',
@@ -94,8 +98,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Mall of Travancore, Chackai Bypass, Trivandrum, Kerala',
     pincode: '695024',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '11',
     name: 'JV Cinemas',
@@ -103,8 +107,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Attingal Road, Kazhakkoottam Junction, Trivandrum, Kerala',
     pincode: '695582',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '12',
     name: 'Central Cinemas',
@@ -112,6 +116,7 @@ final List<Theatre> dummyTheatres = [
     address: 'Vazhuthacaud Road, Near Cotton Hill School, Trivandrum, Kerala',
     pincode: '695014',
     country: 'India',
+    facilities: standardFacilities,
   ),
   Theatre(
     id: '13',
@@ -120,8 +125,8 @@ final List<Theatre> dummyTheatres = [
     address: 'NH 66, Near Medical College Junction, Parippally, Kollam, Kerala',
     pincode: '691574',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '14',
     name: 'Prince Theatre',
@@ -129,8 +134,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near KSRTC Bus Stand, Karunagappally, Kollam, Kerala',
     pincode: '690518',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '15',
     name: 'Carnival Cinemas',
@@ -138,8 +143,8 @@ final List<Theatre> dummyTheatres = [
     address: 'RP Mall, Residency Road, Kollam, Kerala',
     pincode: '691001',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '16',
     name: 'Archana Aradhana Theatre',
@@ -147,8 +152,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Pulamon Junction, Kottarakkara, Kollam, Kerala',
     pincode: '691531',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '17',
     name: 'Gmax Cinemas',
@@ -156,8 +161,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near Chinnakada Clock Tower, Kollam, Kerala',
     pincode: '691001',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '18',
     name: 'Sri Ram Cinemas',
@@ -165,8 +170,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near KSRTC Bus Station, Punalur, Kollam, Kerala',
     pincode: '691305',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '19',
     name: 'PVR Lulu Cinemas',
@@ -174,8 +179,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Lulu International Shopping Mall, Edappally, Kochi, Kerala',
     pincode: '682024',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '20',
     name: 'Cinepolis',
@@ -183,8 +188,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Centre Square Mall, Seaport Airport Road, Kochi, Kerala',
     pincode: '682022',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '21',
     name: 'Shenoys Cinemas',
@@ -192,8 +197,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Shenoys Junction, MG Road, Kochi, Kerala',
     pincode: '682035',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '22',
     name: 'K Cinemas',
@@ -201,8 +206,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Beach Road, Cherai, Kochi, Kerala',
     pincode: '683514',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '23',
     name: 'Aashirvad Cineplexx',
@@ -210,8 +215,8 @@ final List<Theatre> dummyTheatres = [
     address: 'MC Road, Near KSRTC Bus Stand, Perumbavoor, Kochi, Kerala',
     pincode: '683542',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   Theatre(
     id: '24',
     name: 'Vanitha Vineetha Cinemas',
@@ -219,8 +224,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near Changampuzha Park, Edappally, Kochi, Kerala',
     pincode: '682024',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '25',
     name: 'Padma Theatre',
@@ -228,8 +233,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near South Railway Station, Ernakulam, Kochi, Kerala',
     pincode: '682016',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   Theatre(
     id: '26',
     name: 'EVM Cinema',
@@ -237,7 +242,9 @@ final List<Theatre> dummyTheatres = [
     address: 'River Road, Fort Kochi, Kochi, Kerala',
     pincode: '682001',
     country: 'India',
-  ), // Alappuzha
+    facilities: standardFacilities,
+  ),
+  // Alappuzha
   Theatre(
     id: '27',
     name: 'Seethas Theatre',
@@ -245,8 +252,8 @@ final List<Theatre> dummyTheatres = [
     address: 'CCSB Road, Near Municipal Office, Alappuzha, Kerala',
     pincode: '688001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Pathanamthitta
   Theatre(
     id: '28',
@@ -255,8 +262,8 @@ final List<Theatre> dummyTheatres = [
     address: 'College Road, Near KSRTC Bus Stand, Pathanamthitta, Kerala',
     pincode: '689645',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Kottayam
   Theatre(
     id: '29',
@@ -265,8 +272,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near KSRTC Bus Stand, Kottayam, Kerala',
     pincode: '686001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Idukki
   Theatre(
     id: '30',
@@ -275,8 +282,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Vengalloor Junction, Thodupuzha, Idukki, Kerala',
     pincode: '685584',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Thrissur
   Theatre(
     id: '31',
@@ -285,8 +292,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Sobha City Mall, Puzhakkal, Thrissur, Kerala',
     pincode: '680553',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Palakkad
   Theatre(
     id: '32',
@@ -295,8 +302,8 @@ final List<Theatre> dummyTheatres = [
     address: 'GB Road, Near Stadium Bus Stand, Palakkad, Kerala',
     pincode: '678001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Malappuram
   Theatre(
     id: '33',
@@ -305,8 +312,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Ooty Road, Perinthalmanna, Malappuram, Kerala',
     pincode: '679322',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Kozhikode
   Theatre(
     id: '34',
@@ -315,8 +322,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Mavoor Road, Near KSRTC Bus Stand, Kozhikode, Kerala',
     pincode: '673001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Wayanad
   Theatre(
     id: '35',
@@ -325,8 +332,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Main Road, Near Civil Station, Kalpetta, Wayanad, Kerala',
     pincode: '673121',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Kannur
   Theatre(
     id: '36',
@@ -335,8 +342,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near New Bus Stand, Thavakkara, Kannur, Kerala',
     pincode: '670002',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Kasaragod
   Theatre(
     id: '37',
@@ -345,8 +352,8 @@ final List<Theatre> dummyTheatres = [
     address: 'MG Road, Near Old Bus Stand, Kasaragod, Kerala',
     pincode: '671121',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Chennai
   Theatre(
     id: '38',
@@ -355,8 +362,8 @@ final List<Theatre> dummyTheatres = [
     address: 'VR Mall, Jawaharlal Nehru Road, Anna Nagar, Chennai, Tamil Nadu',
     pincode: '600040',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Coimbatore
   Theatre(
     id: '39',
@@ -366,8 +373,8 @@ final List<Theatre> dummyTheatres = [
         'Brookefields Mall, Dr Krishnasamy Mudaliyar Road, Coimbatore, Tamil Nadu',
     pincode: '641001',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Madurai
   Theatre(
     id: '40',
@@ -376,8 +383,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Vishaal De Mall, Anna Nagar, Madurai, Tamil Nadu',
     pincode: '625020',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Trichy
   Theatre(
     id: '41',
@@ -386,8 +393,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near Central Bus Stand, Thillai Nagar, Trichy, Tamil Nadu',
     pincode: '620018',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Salem
   Theatre(
     id: '42',
@@ -396,8 +403,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Meyyanur Bypass Road, Salem, Tamil Nadu',
     pincode: '636004',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Erode
   Theatre(
     id: '43',
@@ -406,8 +413,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Brough Road, Erode, Tamil Nadu',
     pincode: '638001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Tirunelveli
   Theatre(
     id: '44',
@@ -416,8 +423,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Near Bus Stand, Palayamkottai, Tirunelveli, Tamil Nadu',
     pincode: '627002',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Thoothukudi
   Theatre(
     id: '45',
@@ -426,8 +433,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Beach Road, Thoothukudi, Tamil Nadu',
     pincode: '628001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Vellore
   Theatre(
     id: '46',
@@ -436,8 +443,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Velocity Mall, Katpadi Road, Vellore, Tamil Nadu',
     pincode: '632014',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Tiruppur
   Theatre(
     id: '47',
@@ -446,8 +453,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Avinashi Road, Tiruppur, Tamil Nadu',
     pincode: '641603',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Kanchipuram
   Theatre(
     id: '48',
@@ -456,8 +463,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Gandhi Road, Kanchipuram, Tamil Nadu',
     pincode: '631501',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Dindigul
   Theatre(
     id: '49',
@@ -466,8 +473,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Palani Road, Dindigul, Tamil Nadu',
     pincode: '624001',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Nagercoil
   Theatre(
     id: '50',
@@ -476,8 +483,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Cape Road, Nagercoil, Tamil Nadu',
     pincode: '629001',
     country: 'India',
+    facilities: standardFacilities,
   ),
-
   // Hosur
   Theatre(
     id: '51',
@@ -486,8 +493,8 @@ final List<Theatre> dummyTheatres = [
     address: 'Mathigiri Road, Hosur, Tamil Nadu',
     pincode: '635109',
     country: 'India',
+    facilities: premiumFacilities,
   ),
-
   // Karur
   Theatre(
     id: '52',
@@ -496,5 +503,6 @@ final List<Theatre> dummyTheatres = [
     address: 'Covai Road, Karur, Tamil Nadu',
     pincode: '639001',
     country: 'India',
+    facilities: standardFacilities,
   ),
 ];

@@ -5,6 +5,7 @@ class Theatre {
   final String address;
   final String pincode;
   final String country;
+  final List<String> facilities;
 
   Theatre({
     required this.id,
@@ -13,5 +14,6 @@ class Theatre {
     required this.address,
     required this.pincode,
     required this.country,
+    required this.facilities,
   });
 }

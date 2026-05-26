@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
+import 'package:prime_tickets/features/theatre/presentation/pages/theatre_details_page.dart';
 
 class TheatreCard extends StatelessWidget {
   final Theatre theatre;
@@ -10,7 +11,13 @@ class TheatreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // navigate later
+        print("Tapped");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => TheatreDetailsPage(theatre: theatre),
+          ),
+        );
       },
 
       child: Container(
