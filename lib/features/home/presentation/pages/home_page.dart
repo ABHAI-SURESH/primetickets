@@ -19,6 +19,34 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+class _SearchBarDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  double get minExtent => 70;
+
+  @override
+  double get maxExtent => 70;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return Container(
+      color: const Color(0xFFF8F9FB), // match background
+
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+
+      child: const HomeSearchBar(),
+    );
+  }
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+}
+
 class _HomePageState extends State<HomePage> {
   String currentCity = "Select Location";
 
@@ -66,11 +94,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FB),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
+          slivers: [
+            /// HEADER (SCROLLS AWAY)
+            SliverToBoxAdapter(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,86 +111,112 @@ class _HomePageState extends State<HomePage> {
                       onTapLocation: _openLocationPage,
                     ),
 
-                    const SizedBox(height: 20),
-
-                    const HomeSearchBar(),
-
                     const SizedBox(height: 8),
-
-                    ///SHOW ONLY IF EXISTS
-                    if (booking != null) ...[
-                      BookingTicketCard(booking: booking),
-
-                      const SizedBox(height: 8),
-                    ],
-
-                    const Text(
-                      'Latest Releases',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                    ),
                   ],
                 ),
               ),
-              const MovieCarousel(),
+            ),
 
-              const SizedBox(height: 15),
+            ///STICKY SEARCH BAR
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _SearchBarDelegate(),
+            ),
 
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Align(
-                  alignment: AlignmentGeometry.centerLeft,
-                  child: Text(
-                    'Upcoming Releases',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
+            ///CONTENT
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (booking != null) ...[
+                          BookingTicketCard(booking: booking),
+                          const SizedBox(height: 8),
+                        ],
+
+                        const Text(
+                          'Latest Releases',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ),
 
-              const SizedBox(height: 15),
+                  const MovieCarousel(),
 
-              const MovieHorizontalList(),
+                  const SizedBox(height: 15),
 
-              const SizedBox(height: 55),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Align(
-                  alignment: AlignmentGeometry.centerLeft,
-                  child: Text(
-                    'Explore',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: TheatreNearbyBanner(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => TheatrePage(selectedCity: currentCity),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Upcoming Releases',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  const MovieHorizontalList(),
+
+                  const SizedBox(height: 55),
+
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Explore',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: TheatreNearbyBanner(
+                      onTap: () {
+                        if (currentCity == "Select Location") {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Please select a location first"),
+                            ),
+                          );
+                          return;
+                        }
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                TheatrePage(selectedCity: currentCity),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  const SizedBox(height: 100),
+                ],
               ),
-              const SizedBox(height: 100),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
