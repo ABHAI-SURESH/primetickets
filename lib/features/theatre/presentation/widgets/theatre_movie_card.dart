@@ -13,17 +13,17 @@ class TheatreMovieCard extends StatelessWidget {
 
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(10),
 
           child: Image.asset(
             movie.imagePath,
-            width: 90,
-            height: 130,
+            width: 80,
+            height: 110,
             fit: BoxFit.cover,
           ),
         ),
 
-        const SizedBox(width: 16),
+        const SizedBox(width: 14),
 
         Expanded(
           child: Column(
@@ -33,7 +33,7 @@ class TheatreMovieCard extends StatelessWidget {
               Text(
                 movie.title,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -42,12 +42,15 @@ class TheatreMovieCard extends StatelessWidget {
 
               Text(
                 '${movie.certificate} • ${movie.languages.first} • 2D',
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(color: Colors.grey.shade700, fontSize: 13),
               ),
 
               const SizedBox(height: 4),
 
-              Text(movie.genre, style: TextStyle(color: Colors.grey.shade600)),
+              Text(
+                movie.genre,
+                style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+              ),
             ],
           ),
         ),

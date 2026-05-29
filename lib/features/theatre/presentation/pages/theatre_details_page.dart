@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
+import 'package:prime_tickets/features/theatre/presentation/widgets/showtime_grid.dart';
+import 'package:prime_tickets/features/theatre/presentation/widgets/theatre_movie_card.dart';
 
 import '../../domain/models/theatre.dart';
 import '../../data/dummy_theatre_shows.dart';
@@ -48,52 +51,70 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
 
       appBar: const TheatreHeader(),
 
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// THEATRE INFO
-            TheatreInfoSection(
-              theatreName: widget.theatre.name,
-              place: widget.theatre.place,
-              address: widget.theatre.address,
-            ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /// THEATRE INFO
+          TheatreInfoSection(
+            theatreName: widget.theatre.name,
+            place: widget.theatre.place,
+            address: widget.theatre.address,
+          ),
 
-            const SizedBox(height: 10),
+          const SizedBox(height: 10),
 
-            /// VIEW DETAILS
-            TheatreDetailsLink(onTap: () {}),
+          /// VIEW DETAILS
+          TheatreDetailsLink(onTap: () {}),
 
-            const SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-            /// DATE SELECTOR
-            DateSelector(
-              dates: dates,
-              selectedDate: selectedDate,
-              onDateSelected: (date) {
-                setState(() {
-                  selectedDate = date;
-                });
+          /// DATE SELECTOR
+          DateSelector(
+            dates: dates,
+            selectedDate: selectedDate,
+            onDateSelected: (date) {
+              setState(() {
+                selectedDate = date;
+              });
+            },
+          ),
+
+          const SizedBox(height: 16),
+
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+
+              itemCount: theatreShows.length,
+
+              itemBuilder: (context, index) {
+                final theatreShow = theatreShows[index];
+
+                final movie = dummyMovies.firstWhere(
+                  (m) => m.id == theatreShow.movieId,
+                );
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    TheatreMovieCard(movie: movie),
+
+                    const SizedBox(height: 16),
+
+                    ShowtimeGrid(shows: theatreShow.showTimes),
+
+                    const SizedBox(height: 24),
+
+                    Divider(color: Colors.grey.shade300),
+                  ],
+                );
               },
             ),
+          ),
 
-            const SizedBox(height: 16),
-
-            /// TEMPORARY CHECK
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                "Movies found: ${theatreShows.length}",
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 30),
-          ],
-        ),
+          const SizedBox(height: 30),
+        ],
       ),
     );
   }
