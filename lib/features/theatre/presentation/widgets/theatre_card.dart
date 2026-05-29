@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
-import 'package:prime_tickets/features/theatre/presentation/pages/theatre_details_page.dart';
+import 'package:prime_tickets/features/theatre/presentation/pages/theatre_details_showtime_page.dart';
 
 class TheatreCard extends StatelessWidget {
   final Theatre theatre;
