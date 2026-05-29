@@ -9,13 +9,25 @@ class ShowtimeGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 12,
-      runSpacing: 12,
+    return SizedBox(
+      height: ((shows.length / 3).ceil()) * 75.0,
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
 
-      children: shows.map((show) {
-        return ShowtimeCard(show: show);
-      }).toList(),
+        itemCount: shows.length,
+
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          childAspectRatio: 2.1,
+        ),
+
+        itemBuilder: (context, index) {
+          return ShowtimeCard(show: shows[index]);
+        },
+      ),
     );
   }
 }

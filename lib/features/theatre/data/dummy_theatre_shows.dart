@@ -43,7 +43,7 @@ final List<TheatreShow> dummyTheatreShows = [
   TheatreShow(
     theatreId: '1',
     movieId: '2',
-    date: DateTime.now(),
+    date: DateTime.now().add(const Duration(days: 1)),
 
     showTimes: [
       ShowTime(

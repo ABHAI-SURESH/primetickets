@@ -10,7 +10,7 @@ class ShowtimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 110,
-      height: 75,
+      height: 55,
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -24,10 +24,10 @@ class ShowtimeCard extends StatelessWidget {
         children: [
           Text(
             show.time,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
 
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
 
           Text(
             show.screenName,

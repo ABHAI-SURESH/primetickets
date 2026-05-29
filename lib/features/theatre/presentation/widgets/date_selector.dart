@@ -63,28 +63,34 @@ class DateSelector extends StatelessWidget {
                 ),
               ),
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    index == 0
-                        ? 'Today'
-                        : index == 1
-                        ? 'Tomorrow'
-                        : '${date.day} ${_monthName(date.month)}',
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      index == 0
+                          ? 'Today'
+                          : index == 1
+                          ? 'Tomorrow'
+                          : '${date.day} ${_monthName(date.month)}',
 
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                  ),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
 
-                  const SizedBox(height: 4),
+                    const SizedBox(height: 4),
 
-                  Text(
-                    index == 0 || index == 1
-                        ? '${_weekday(date)}, ${date.day} ${_monthName(date.month)}'
-                        : _weekday(date),
-                    style: TextStyle(color: Colors.grey.shade600),
-                  ),
-                ],
+                    Text(
+                      index == 0 || index == 1
+                          ? '${_weekday(date)}, ${date.day} ${_monthName(date.month)}'
+                          : _weekday(date),
+                      style: TextStyle(color: Colors.grey.shade600),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

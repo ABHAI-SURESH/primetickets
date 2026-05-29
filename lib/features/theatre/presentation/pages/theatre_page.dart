@@ -49,7 +49,6 @@ class _TheatrePageState extends State<TheatrePage> {
   }
 
   Widget build(BuildContext context) {
-    print("Total theatres: ${dummyTheatres.length}");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,

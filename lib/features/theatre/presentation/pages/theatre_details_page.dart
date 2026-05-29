@@ -66,7 +66,7 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
           /// VIEW DETAILS
           TheatreDetailsLink(onTap: () {}),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
 
           /// DATE SELECTOR
           DateSelector(
@@ -79,11 +79,11 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
             },
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
 
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
 
               itemCount: theatreShows.length,
 
@@ -105,8 +105,6 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
                     ShowtimeGrid(shows: theatreShow.showTimes),
 
                     const SizedBox(height: 24),
-
-                    Divider(color: Colors.grey.shade300),
                   ],
                 );
               },
