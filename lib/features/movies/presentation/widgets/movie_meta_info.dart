@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MovieMetaInfo extends StatelessWidget {
   final String certificate;
   final String language;
   final String duration;
+  final DateTime releaseDate;
 
-  const MovieMetaInfo({
+  MovieMetaInfo({
     super.key,
     required this.certificate,
     required this.language,
     required this.duration,
+    required this.releaseDate,
   });
 
   @override
@@ -23,11 +26,14 @@ class MovieMetaInfo extends StatelessWidget {
         const SizedBox(width: 8),
 
         _capsule(duration),
+        const Spacer(),
+
+        _capsule(DateFormat('dd MMM yyyy').format(releaseDate)),
       ],
     );
   }
 
-  /// 🔹 CAPSULE UI
+  /// CAPSULE UI
   Widget _capsule(String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),

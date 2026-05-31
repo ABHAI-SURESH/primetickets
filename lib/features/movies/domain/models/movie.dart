@@ -5,7 +5,7 @@ class Movie {
 
   final String title;
   final String imagePath;
-
+  final DateTime releaseDate;
   final String genre;
   final String duration;
 
@@ -24,6 +24,7 @@ class Movie {
     required this.id,
     required this.title,
     required this.imagePath,
+    required this.releaseDate,
     required this.genre,
     required this.duration,
     required this.certificate,

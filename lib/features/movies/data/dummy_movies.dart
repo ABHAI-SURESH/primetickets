@@ -6,6 +6,7 @@ final List<Movie> dummyMovies = [
     id: '1',
     title: 'Doomsday',
     imagePath: 'assets/images/movies/doomsday.jpg',
+    releaseDate: DateTime(2025, 6, 20),
     genre: 'Action • Thriller',
     duration: '2h 10m',
     certificate: 'UA16+',
@@ -36,6 +37,7 @@ final List<Movie> dummyMovies = [
     id: '2',
     title: 'Dune',
     imagePath: 'assets/images/movies/dune.jpg',
+    releaseDate: DateTime(2021, 10, 22),
     genre: 'Sci-Fi • Adventure',
     duration: '2h 35m',
     certificate: 'U',
@@ -52,6 +54,7 @@ final List<Movie> dummyMovies = [
     id: '3',
     title: 'Infinity War',
     imagePath: 'assets/images/movies/infinity_war.jpg',
+    releaseDate: DateTime(2018, 4, 27),
     genre: 'Action • Sci-Fi',
     duration: '2h 30m',
     certificate: 'UA13+',
@@ -68,6 +71,7 @@ final List<Movie> dummyMovies = [
     id: '4',
     title: 'Spiderman Far From Home',
     imagePath: 'assets/images/movies/spiderman.jpg',
+    releaseDate: DateTime(2019, 7, 2),
     genre: 'Superhero • Action',
     duration: '2h 10m',
     certificate: 'UA13+',
@@ -81,9 +85,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '6',
+    id: '5',
     title: 'Project Hail Mary',
     imagePath: 'assets/images/movies/projecthailmary.jpeg',
+    releaseDate: DateTime(2026, 3, 20),
     genre: 'Sci-Fi',
     duration: '2h 20m',
     certificate: 'UA13+',
@@ -97,9 +102,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '7',
+    id: '6',
     title: 'Deadpool and Wolverine',
     imagePath: 'assets/images/movies/deadpool_wolverine.jpeg',
+    releaseDate: DateTime(2024, 7, 26),
     genre: 'Action • Comedy',
     duration: '2h 05m',
     certificate: 'UA18+',
@@ -113,9 +119,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '8',
+    id: '7',
     title: 'The Dark Knight',
     imagePath: 'assets/images/movies/the_dark_knight.jpeg',
+    releaseDate: DateTime(2008, 7, 18),
     genre: 'Crime • Action',
     duration: '2h 32m',
     certificate: 'UA13+',
@@ -129,9 +136,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '9',
+    id: '8',
     title: 'Zootopia 2',
     imagePath: 'assets/images/movies/zootopia_2.jpeg',
+    releaseDate: DateTime(2025, 11, 26),
     genre: 'Animation • Family',
     duration: '1h 50m',
     certificate: 'UA13+',
@@ -145,9 +153,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '10',
+    id: '9',
     title: 'F1 The Movie',
     imagePath: 'assets/images/movies/f1_themovie.jpeg',
+    releaseDate: DateTime(2025, 6, 27),
     genre: 'Sports • Drama',
     duration: '2h 15m',
     certificate: 'UA13+',
@@ -161,9 +170,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '11',
+    id: '10',
     title: 'Inception',
     imagePath: 'assets/images/movies/inception.jpeg',
+    releaseDate: DateTime(2010, 7, 16),
     genre: 'Sci-Fi • Thriller',
     duration: '2h 28m',
     certificate: 'UA13+',
@@ -177,9 +187,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '12',
+    id: '11',
     title: 'Top Gun Maverick',
     imagePath: 'assets/images/movies/topgun_maverik.jpeg',
+    releaseDate: DateTime(2022, 5, 27),
     genre: 'Action • Drama',
     duration: '2h 10m',
     certificate: 'UA13+',
@@ -193,9 +204,10 @@ final List<Movie> dummyMovies = [
   ),
 
   Movie(
-    id: '13',
+    id: '12',
     title: 'Avatar: Fire and Ash',
     imagePath: 'assets/images/movies/avatar_fire_and_ash.jpeg',
+    releaseDate: DateTime(2025, 12, 19),
     genre: 'Fantasy • Sci-Fi',
     duration: '2h 40m',
     certificate: 'UA13+',

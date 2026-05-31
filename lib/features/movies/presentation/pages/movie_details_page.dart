@@ -83,6 +83,7 @@ class MovieDetailsPage extends StatelessWidget {
                       certificate: movie.certificate,
                       language: movie.languages.first,
                       duration: movie.duration,
+                      releaseDate: movie.releaseDate,
                     ),
                   ),
 
