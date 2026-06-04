@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MovieTheatresHeader extends StatelessWidget {
   final String movieTitle;
+  final List<String> movieLanguages;
   final bool isSearching;
   final ValueChanged<String> onSearchChanged;
   final VoidCallback onBack;
@@ -11,6 +12,7 @@ class MovieTheatresHeader extends StatelessWidget {
   const MovieTheatresHeader({
     super.key,
     required this.movieTitle,
+    required this.movieLanguages,
     required this.isSearching,
     required this.onSearchChanged,
     required this.onBack,
@@ -36,14 +38,31 @@ class MovieTheatresHeader extends StatelessWidget {
             const SizedBox(width: 12),
 
             Expanded(
-              child: Text(
-                movieTitle,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      movieTitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
 
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      movieLanguages.first,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

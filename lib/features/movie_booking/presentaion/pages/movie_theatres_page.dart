@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:prime_tickets/features/movie_booking/presentaion/widgets/movie_theatre_header.dart';
-
-import '../../../movies/domain/models/movie.dart';
-
-import '../../../theatre/data/dummy_theatres.dart';
-import '../../../theatre/data/dummy_theatre_shows.dart';
-
-import '../../../theatre/domain/models/theatre.dart';
-
-import '../../../theatre/presentation/widgets/date_selector.dart';
-
-import '../widgets/theatre_show_card.dart';
+import 'package:prime_tickets/features/movies/domain/models/movie.dart';
+import 'package:prime_tickets/features/theatre/data/dummy_theatres.dart';
+import 'package:prime_tickets/features/theatre/data/dummy_theatre_shows.dart';
+import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
+import 'package:prime_tickets/features/theatre/presentation/widgets/date_selector.dart';
+import 'package:prime_tickets/features/movie_booking/presentaion/widgets/theatre_show_card.dart';
 
 class MovieTheatresPage extends StatefulWidget {
   final Movie movie;
@@ -84,6 +79,7 @@ class _MovieTheatresPageState extends State<MovieTheatresPage> {
             /// HEADER
             MovieTheatresHeader(
               movieTitle: widget.movie.title,
+              movieLanguages: widget.movie.languages,
 
               isSearching: isSearching,
 
@@ -132,6 +128,10 @@ class _MovieTheatresPageState extends State<MovieTheatresPage> {
                       ),
                     )
                   : ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 16,
+                      ),
                       itemCount: filteredShows.length,
 
                       itemBuilder: (context, index) {

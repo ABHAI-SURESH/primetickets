@@ -17,7 +17,7 @@ class TheatreShowCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,8 +38,6 @@ class TheatreShowCard extends StatelessWidget {
           const SizedBox(height: 14),
 
           ShowtimeGrid(shows: theatreShow.showTimes),
-
-          const SizedBox(height: 20),
         ],
       ),
     );
