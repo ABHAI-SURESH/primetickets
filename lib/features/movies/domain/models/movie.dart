@@ -9,7 +9,7 @@ class Movie {
   final String genre;
   final String duration;
 
-  final String certificate; // U, UA13+, A, etc.
+  final String certificate;
   final List<String> languages;
 
   final double rating;

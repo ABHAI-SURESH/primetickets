@@ -25,7 +25,6 @@ class _LocationPageState extends State<LocationPage> {
   }
 
   void _selectCity(String city) {
-    print("Selected: $city");
     Navigator.pop(context, city);
   }
 

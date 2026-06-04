@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/movie_booking/presentaion/pages/movie_theatres_page.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_background.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_book_tickets_button.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_people_section.dart';
@@ -116,7 +117,10 @@ class MovieDetailsPage extends StatelessWidget {
       ///BOOK TICKETS BUTTON
       bottomNavigationBar: BookTicketButton(
         onTap: () {
-          print("Book Tickets clicked");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => MovieTheatresPage(movie: movie)),
+          );
         },
       ),
     );
