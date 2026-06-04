@@ -117,6 +117,7 @@ class _MovieTheatresPageState extends State<MovieTheatresPage> {
                 });
               },
             ),
+            const SizedBox(height: 10),
 
             /// THEATRE LIST
             Expanded(
@@ -130,7 +131,7 @@ class _MovieTheatresPageState extends State<MovieTheatresPage> {
                   : ListView.builder(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
-                        vertical: 16,
+                        vertical: 24,
                       ),
                       itemCount: filteredShows.length,
 
