@@ -136,7 +136,6 @@ class _HomePageState extends State<HomePage> {
                           BookingTicketCard(booking: booking),
                           const SizedBox(height: 8),
                         ],
-
                         const Text(
                           'Latest Releases',
                           style: TextStyle(
