@@ -10,7 +10,7 @@ class MovieHorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     final movies = dummyMovies;
     return SizedBox(
-      height: 250,
+      height: 230,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),

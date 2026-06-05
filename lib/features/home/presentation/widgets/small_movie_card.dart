@@ -17,7 +17,7 @@ class SmallMovieCard extends StatelessWidget {
         );
       },
       child: Container(
-        width: 150,
+        width: 130,
 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),

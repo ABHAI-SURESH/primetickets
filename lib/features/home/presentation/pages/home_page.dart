@@ -9,7 +9,7 @@ import 'package:prime_tickets/features/theatre/presentation/pages/theatre_page.d
 
 import 'package:prime_tickets/features/home/presentation/widgets/home_header.dart';
 import 'package:prime_tickets/features/home/presentation/widgets/home_search_bar.dart';
-import 'package:prime_tickets/features/home/presentation/widgets/movie_carousel.dart';
+import 'package:prime_tickets/features/home/presentation/widgets/movie_carousel_v2.dart';
 import 'package:prime_tickets/features/home/presentation/widgets/movie_horizontal_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -136,6 +136,7 @@ class _HomePageState extends State<HomePage> {
                           BookingTicketCard(booking: booking),
                           const SizedBox(height: 8),
                         ],
+                        const SizedBox(height: 10),
                         const Text(
                           'Latest Releases',
                           style: TextStyle(
@@ -147,9 +148,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
+                  const SizedBox(height: 15),
+
                   const MovieCarousel(),
 
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 32),
 
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),

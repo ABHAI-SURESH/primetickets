@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
+import '../../../movies/domain/models/movie.dart';
 
-class MovieCard extends StatelessWidget {
-  final String imageUrl;
+class FeaturedMovieCard extends StatelessWidget {
+  final Movie movie;
 
-  // Removed the 'scale' parameter from here. The Carousel handles it now.
-  const MovieCard({super.key, required this.imageUrl});
+  const FeaturedMovieCard({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Container(
-      width: 240, // Added explicit width
-      height: 360, // Added explicit height
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(
-              0.14,
-            ), // Adjusted to match your original
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-        image: DecorationImage(image: AssetImage(imageUrl), fit: BoxFit.cover),
+      width: width * 0.92,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+
+        child: Image.asset(movie.imagePath, fit: BoxFit.cover),
       ),
     );
   }
