@@ -11,7 +11,6 @@ class TheatreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Tapped");
         Navigator.push(
           context,
           MaterialPageRoute(

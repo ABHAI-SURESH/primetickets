@@ -3,6 +3,7 @@ import '../domain/models/show_time.dart';
 
 final List<TheatreShow> dummyTheatreShows = [
   TheatreShow(
+    id: 'show_101',
     theatreId: '1',
     movieId: '1',
     date: DateTime.now(),
@@ -41,6 +42,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_102',
     theatreId: '1',
     movieId: '2',
     date: DateTime.now().add(const Duration(days: 1)),
@@ -66,6 +68,7 @@ final List<TheatreShow> dummyTheatreShows = [
     ],
   ),
   TheatreShow(
+    id: 'show_103',
     theatreId: '2',
     movieId: '1',
     date: DateTime.now(),
@@ -94,6 +97,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_104',
     theatreId: '2',
     movieId: '3',
     date: DateTime.now(),
@@ -122,6 +126,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_105',
     theatreId: '3',
     movieId: '2',
     date: DateTime.now(),
@@ -150,6 +155,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_106',
     theatreId: '4',
     movieId: '1',
     date: DateTime.now(),
@@ -178,6 +184,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_107',
     theatreId: '5',
     movieId: '4',
     date: DateTime.now(),
@@ -206,6 +213,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_108',
     theatreId: '19',
     movieId: '1',
     date: DateTime.now(),
@@ -239,6 +247,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_109',
     theatreId: '20',
     movieId: '2',
     date: DateTime.now(),
@@ -267,6 +276,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_110',
     theatreId: '31',
     movieId: '3',
     date: DateTime.now(),
@@ -295,6 +305,7 @@ final List<TheatreShow> dummyTheatreShows = [
   ),
 
   TheatreShow(
+    id: 'show_111',
     theatreId: '38',
     movieId: '5',
     date: DateTime.now(),

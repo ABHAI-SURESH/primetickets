@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/pages/seat_selection_page.dart';
 import 'package:prime_tickets/features/theatre/presentation/widgets/showtime_grid.dart';
 import 'package:prime_tickets/features/theatre/presentation/widgets/theatre_movie_card.dart';
 
@@ -102,7 +103,18 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
 
                     const SizedBox(height: 16),
 
-                    ShowtimeGrid(shows: theatreShow.showTimes),
+                    ShowtimeGrid(
+                      shows: theatreShow.showTimes,
+                      onShowSelected: (showTime) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                SeatSelectionPage(showId: theatreShow.id),
+                          ),
+                        );
+                      },
+                    ),
 
                     const SizedBox(height: 24),
                   ],

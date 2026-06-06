@@ -4,8 +4,9 @@ import 'showtime_card.dart';
 
 class ShowtimeGrid extends StatelessWidget {
   final List<ShowTime> shows;
+  final Function(ShowTime)? onShowSelected;
 
-  const ShowtimeGrid({super.key, required this.shows});
+  const ShowtimeGrid({super.key, required this.shows, this.onShowSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,12 @@ class ShowtimeGrid extends StatelessWidget {
         ),
 
         itemBuilder: (context, index) {
-          return ShowtimeCard(show: shows[index]);
+          return ShowtimeCard(
+            show: shows[index],
+            onTap: () {
+              onShowSelected?.call(shows[index]);
+            },
+          );
         },
       ),
     );
