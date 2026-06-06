@@ -31,16 +31,25 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.45,
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: Column(
         children: [
+          Container(
+            width: 120,
+            height: 4,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          const SizedBox(height: 22),
           const Text(
             'How many seats?',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
 
           const SizedBox(height: 24),
@@ -101,7 +110,7 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
 
           Text(
             '${widget.seatType} • ₹${widget.seatPrice.toInt()}',
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
 
           const Spacer(),
