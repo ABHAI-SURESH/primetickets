@@ -5,6 +5,7 @@ import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_selection_header.dart';
 import 'package:prime_tickets/features/seat_selection/data/dummy_shows.dart';
 import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/showtime_selector.dart';
 import 'package:prime_tickets/features/theatre/data/dummy_theatres.dart';
 
 import 'package:prime_tickets/features/seat_selection/domain/models/show.dart';
@@ -22,9 +23,12 @@ class SeatSelectionPage extends StatefulWidget {
 
 class _SeatSelectionPageState extends State<SeatSelectionPage> {
   int selectedSeatCount = 1;
+
   late Show selectedShow;
   late Movie selectedMovie;
   late Theatre selectedTheatre;
+
+  late List<Show> availableShows;
 
   @override
   void initState() {
@@ -39,6 +43,17 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
     selectedTheatre = dummyTheatres.firstWhere(
       (theatre) => theatre.id == selectedShow.theatreId,
     );
+
+    availableShows = dummyShows
+        .where(
+          (show) =>
+              show.movieId == selectedShow.movieId &&
+              show.theatreId == selectedShow.theatreId &&
+              show.date.day == selectedShow.date.day &&
+              show.date.month == selectedShow.date.month &&
+              show.date.year == selectedShow.date.year,
+        )
+        .toList();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _showSeatCountSheet();
@@ -98,7 +113,15 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
               },
             ),
 
-            const Divider(height: 1),
+            ShowtimeSelector(
+              shows: availableShows,
+              selectedShowId: selectedShow.id,
+              onShowSelected: (show) {
+                setState(() {
+                  selectedShow = show;
+                });
+              },
+            ),
 
             /// TEMP PLACEHOLDER
             Expanded(

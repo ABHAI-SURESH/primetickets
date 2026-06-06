@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 class SeatCountBottomSheet extends StatefulWidget {
   final int initialCount;
-
   final String seatType;
-
   final double seatPrice;
-
   final Function(int) onConfirm;
 
   const SeatCountBottomSheet({
@@ -27,7 +24,6 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
   @override
   void initState() {
     super.initState();
-
     selectedCount = widget.initialCount;
   }
 
@@ -35,15 +31,11 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.45,
-
       padding: const EdgeInsets.all(24),
-
       decoration: const BoxDecoration(
         color: Colors.white,
-
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-
       child: Column(
         children: [
           const Text(
@@ -53,16 +45,13 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
 
           const SizedBox(height: 24),
 
-          /// IMAGE PLACEHOLDER
           Container(
             height: 80,
             width: 80,
-
             decoration: BoxDecoration(
               color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(16),
             ),
-
             child: const Icon(Icons.movie, size: 40),
           ),
 
@@ -70,53 +59,41 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
 
           SizedBox(
             height: 50,
-
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-
-              itemCount: 10,
-
-              separatorBuilder: (_, __) => const SizedBox(width: 8),
-
-              itemBuilder: (context, index) {
+            child: Row(
+              children: List.generate(10, (index) {
                 final count = index + 1;
-
                 final isSelected = selectedCount == count;
 
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedCount = count;
-                    });
-                  },
-
-                  child: Container(
-                    width: 28,
-                    height: 38,
-
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-
-                      border: Border.all(
-                        color: isSelected ? Colors.black : Colors.grey.shade400,
-                        width: 2,
-                      ),
-                    ),
-
+                return Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedCount = count;
+                      });
+                    },
                     child: Center(
-                      child: Text(
-                        count.toString(),
-
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-
-                          color: isSelected ? Colors.black : Colors.grey,
+                      child: Container(
+                        width: 34,
+                        height: 34,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: isSelected ? Colors.black : Colors.transparent,
+                        ),
+                        child: Center(
+                          child: Text(
+                            count.toString(),
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                              color: isSelected ? Colors.white : Colors.grey,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 );
-              },
+              }),
             ),
           ),
 
@@ -132,14 +109,11 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
           SizedBox(
             width: double.infinity,
             height: 52,
-
             child: ElevatedButton(
               onPressed: () {
                 widget.onConfirm(selectedCount);
-
                 Navigator.pop(context);
               },
-
               child: const Text('Select Seats'),
             ),
           ),
