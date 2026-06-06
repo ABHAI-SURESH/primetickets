@@ -91,8 +91,8 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
                   },
 
                   child: Container(
-                    width: 42,
-                    height: 42,
+                    width: 28,
+                    height: 38,
 
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,

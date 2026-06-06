@@ -110,7 +110,7 @@ class _TheatreDetailsPageState extends State<TheatreDetailsPage> {
                           context,
                           MaterialPageRoute(
                             builder: (_) =>
-                                SeatSelectionPage(showId: theatreShow.id),
+                                SeatSelectionPage(showId: showTime.showId),
                           ),
                         );
                       },

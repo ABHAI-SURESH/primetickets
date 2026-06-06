@@ -5,6 +5,7 @@ class Show {
   final String screenId;
   final DateTime date;
   final String time;
+  final String audioFormat;
 
   Show({
     required this.id,
@@ -13,5 +14,6 @@ class Show {
     required this.screenId,
     required this.date,
     required this.time,
+    required this.audioFormat,
   });
 }

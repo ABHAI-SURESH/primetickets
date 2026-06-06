@@ -7,33 +7,37 @@ final List<TheatreShow> dummyTheatreShows = [
     theatreId: '1',
     movieId: '1',
     date: DateTime.now(),
-
     showTimes: [
       ShowTime(
+        showId: 'show_101',
         time: '10:20 AM',
         screenName: 'Audi 1',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_102',
         time: '01:25 PM',
         screenName: 'Audi 1',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_103',
         time: '04:30 PM',
         screenName: 'Audi 2',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_104',
         time: '07:00 PM',
         screenName: 'Audi 2',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_105',
         time: '10:30 PM',
         screenName: 'Audi 3',
         audioFormat: 'Dolby Atmos',
@@ -46,293 +50,25 @@ final List<TheatreShow> dummyTheatreShows = [
     theatreId: '1',
     movieId: '2',
     date: DateTime.now().add(const Duration(days: 1)),
-
     showTimes: [
       ShowTime(
+        showId: 'show_106',
         time: '11:00 AM',
         screenName: 'Audi 1',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_107',
         time: '02:00 PM',
         screenName: 'Audi 2',
         audioFormat: 'Dolby Atmos',
       ),
 
       ShowTime(
+        showId: 'show_108',
         time: '06:00 PM',
         screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-  TheatreShow(
-    id: 'show_103',
-    theatreId: '2',
-    movieId: '1',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '09:30 AM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '12:45 PM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '04:00 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '07:15 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_104',
-    theatreId: '2',
-    movieId: '3',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '10:00 AM',
-        screenName: 'Audi 3',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '01:15 PM',
-        screenName: 'Audi 3',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '05:00 PM',
-        screenName: 'Audi 3',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '09:00 PM',
-        screenName: 'Audi 3',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_105',
-    theatreId: '3',
-    movieId: '2',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '11:15 AM',
-        screenName: 'Screen 1',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '02:30 PM',
-        screenName: 'Screen 1',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '06:15 PM',
-        screenName: 'Screen 2',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '09:45 PM',
-        screenName: 'Screen 2',
-        audioFormat: 'Dolby Digital',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_106',
-    theatreId: '4',
-    movieId: '1',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '10:30 AM',
-        screenName: 'Screen 1',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '01:45 PM',
-        screenName: 'Screen 1',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '05:00 PM',
-        screenName: 'Screen 2',
-        audioFormat: 'Dolby Digital',
-      ),
-      ShowTime(
-        time: '08:15 PM',
-        screenName: 'Screen 2',
-        audioFormat: 'Dolby Digital',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_107',
-    theatreId: '5',
-    movieId: '4',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '09:45 AM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '01:00 PM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '04:15 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '07:30 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_108',
-    theatreId: '19',
-    movieId: '1',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '09:00 AM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '12:20 PM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '03:40 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '07:00 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '10:20 PM',
-        screenName: 'Audi 3',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_109',
-    theatreId: '20',
-    movieId: '2',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '10:10 AM',
-        screenName: 'Audi 4',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '01:30 PM',
-        screenName: 'Audi 4',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '04:50 PM',
-        screenName: 'Audi 5',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '08:10 PM',
-        screenName: 'Audi 5',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_110',
-    theatreId: '31',
-    movieId: '3',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '10:00 AM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '01:15 PM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '04:30 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '07:45 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-    ],
-  ),
-
-  TheatreShow(
-    id: 'show_111',
-    theatreId: '38',
-    movieId: '5',
-    date: DateTime.now(),
-    showTimes: [
-      ShowTime(
-        time: '09:15 AM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '12:30 PM',
-        screenName: 'Audi 1',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '03:45 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '07:00 PM',
-        screenName: 'Audi 2',
-        audioFormat: 'Dolby Atmos',
-      ),
-      ShowTime(
-        time: '10:15 PM',
-        screenName: 'Audi 3',
         audioFormat: 'Dolby Atmos',
       ),
     ],
