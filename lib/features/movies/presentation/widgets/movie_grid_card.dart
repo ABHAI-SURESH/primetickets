@@ -26,7 +26,7 @@ class MovieGridCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// 🔹 POSTER
+            /// POSTER
             Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.vertical(
@@ -40,7 +40,7 @@ class MovieGridCard extends StatelessWidget {
               ),
             ),
 
-            /// 🔹 INFO SECTION
+            /// INFO SECTION
             SizedBox(
               height: 83,
               child: Container(

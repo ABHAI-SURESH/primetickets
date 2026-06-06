@@ -69,7 +69,7 @@ class _MoviesPageState extends State<MoviesPage> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 24,
-                  childAspectRatio: 0.58,
+                  childAspectRatio: 0.52,
                 ),
 
                 itemBuilder: (context, index) {

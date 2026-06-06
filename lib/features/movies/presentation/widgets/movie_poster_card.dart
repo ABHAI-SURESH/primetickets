@@ -11,12 +11,12 @@ class MoviePosterCard extends StatelessWidget {
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          /// 🔹 POSTER
+          /// POSTER
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Container(
               width: double.infinity,
-              height: 310,
+              height: 250,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
 
