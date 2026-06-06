@@ -1,0 +1,1 @@
+enum SeatCellType { seat, gap }
