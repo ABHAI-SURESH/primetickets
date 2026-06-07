@@ -35,9 +35,15 @@ final audi1 = Screen(
       category: premiumCategory,
 
       rows: [
-        SeatLayoutBuilder.buildRow(rowLabel: 'A', pattern: [4, 'gap', 4]),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'A',
+          pattern: ['gap', 4, 'gap', 4],
+        ),
 
-        SeatLayoutBuilder.buildRow(rowLabel: 'B', pattern: [4, 'gap', 4]),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'B',
+          pattern: ['gap', 4, 'gap', 4],
+        ),
 
         SeatLayoutBuilder.buildRow(rowLabel: 'C', pattern: [5, 'gap', 5]),
       ],
@@ -85,3 +91,44 @@ final audi2 = Screen(
     ),
   ],
 );
+
+final audi3 = Screen(
+  id: 'screen_3',
+  theatreId: '1',
+  name: 'Audi 3',
+  audioFormat: 'Dolby Atmos',
+
+  sections: [
+    SeatSection(
+      category: reclinerCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'A', pattern: [2, 'gap', 2]),
+      ],
+    ),
+
+    SeatSection(
+      category: vipCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'B', pattern: [4, 'gap', 4]),
+
+        SeatLayoutBuilder.buildRow(rowLabel: 'C', pattern: [4, 'gap', 4]),
+      ],
+    ),
+
+    SeatSection(
+      category: premiumCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'D', pattern: [5, 'gap', 5]),
+
+        SeatLayoutBuilder.buildRow(rowLabel: 'E', pattern: [5, 'gap', 5]),
+
+        SeatLayoutBuilder.buildRow(rowLabel: 'F', pattern: [5, 'gap', 5]),
+      ],
+    ),
+  ],
+);
+
+final List<Screen> dummyScreens = [audi1, audi2, audi3];

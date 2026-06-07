@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/seat_selection/data/dummy_screens.dart';
+import 'package:prime_tickets/features/seat_selection/domain/models/screen.dart';
+import 'package:prime_tickets/features/seat_selection/domain/models/seat_status.dart';
 
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/booking_info_bar.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_count_bottom_sheet.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_indicator.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_layout_widget.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_selection_header.dart';
 import 'package:prime_tickets/features/seat_selection/data/dummy_shows.dart';
 import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
@@ -31,6 +35,10 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
 
   late List<Show> availableShows;
 
+  late Screen selectedScreen;
+
+  List<String> selectedSeatIds = [];
+
   @override
   void initState() {
     super.initState();
@@ -56,6 +64,10 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
         )
         .toList();
 
+    selectedScreen = dummyScreens.firstWhere(
+      (screen) => screen.id == selectedShow.screenId,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _showSeatCountSheet();
     });
@@ -76,6 +88,19 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
           seatPrice: 180,
 
           onConfirm: (count) {
+            // Clear old selected seats
+            for (final section in selectedScreen.sections) {
+              for (final row in section.rows) {
+                for (final cell in row.cells) {
+                  if (cell.seat?.status == SeatStatus.selected) {
+                    cell.seat!.status = SeatStatus.available;
+                  }
+                }
+              }
+            }
+
+            selectedSeatIds.clear();
+
             setState(() {
               selectedSeatCount = count;
             });
@@ -118,31 +143,115 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
               shows: availableShows,
               selectedShowId: selectedShow.id,
               onShowSelected: (show) {
+                // Clear previous selected seats
+                for (final section in selectedScreen.sections) {
+                  for (final row in section.rows) {
+                    for (final cell in row.cells) {
+                      if (cell.seat?.status == SeatStatus.selected) {
+                        cell.seat!.status = SeatStatus.available;
+                      }
+                    }
+                  }
+                }
+
                 setState(() {
                   selectedShow = show;
+
+                  selectedScreen = dummyScreens.firstWhere(
+                    (screen) => screen.id == show.screenId,
+                  );
+
+                  selectedSeatIds.clear();
                 });
               },
             ),
 
-            ///SEAT INDICATOR
-            const SeatIndicator(),
-
-            /// TEMP PLACEHOLDER
+            ///SEAT LAYOUT
             Expanded(
-              child: Center(
-                child: Text(
-                  'Selected Seats: $selectedSeatCount',
-
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+              child: SeatLayoutWidget(
+                screen: selectedScreen,
+                onSeatTap: onSeatTapped,
               ),
             ),
+
+            ///SEAT INDICATOR
+            const SeatIndicator(),
           ],
         ),
       ),
     );
+  }
+
+  void onSeatTapped(String seatId) {
+    for (final section in selectedScreen.sections) {
+      for (final row in section.rows) {
+        final seatCells = row.cells.where((cell) => cell.seat != null).toList();
+
+        final tappedIndex = seatCells.indexWhere(
+          (cell) => cell.seat!.id == seatId,
+        );
+
+        if (tappedIndex == -1) continue;
+
+        /// Not enough seats remaining in row
+        if (tappedIndex + selectedSeatCount > seatCells.length) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Not enough seats available in this row.'),
+            ),
+          );
+          return;
+        }
+
+        /// Check consecutive seats
+        bool canSelect = true;
+
+        for (int i = tappedIndex; i < tappedIndex + selectedSeatCount; i++) {
+          final seat = seatCells[i].seat!;
+
+          if (seat.status == SeatStatus.booked) {
+            canSelect = false;
+            break;
+          }
+        }
+
+        if (!canSelect) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Unable to find consecutive available seats.'),
+            ),
+          );
+          return;
+        }
+
+        /// Clear old selection
+        for (final id in selectedSeatIds) {
+          for (final sec in selectedScreen.sections) {
+            for (final r in sec.rows) {
+              for (final cell in r.cells) {
+                if (cell.seat?.id == id) {
+                  cell.seat!.status = SeatStatus.available;
+                }
+              }
+            }
+          }
+        }
+
+        selectedSeatIds.clear();
+
+        /// Select new seats
+        for (int i = tappedIndex; i < tappedIndex + selectedSeatCount; i++) {
+          final seat = seatCells[i].seat!;
+
+          seat.status = SeatStatus.selected;
+
+          selectedSeatIds.add(seat.id);
+        }
+
+        setState(() {});
+
+        return;
+      }
+    }
   }
 }
