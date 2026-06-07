@@ -4,6 +4,7 @@ import 'package:prime_tickets/features/seat_selection/domain/models/screen.dart'
 import 'package:prime_tickets/features/seat_selection/domain/models/seat_status.dart';
 
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/booking_info_bar.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_booking_summary_bar.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_count_bottom_sheet.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_indicator.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_layout_widget.dart';
@@ -28,6 +29,8 @@ class SeatSelectionPage extends StatefulWidget {
 
 class _SeatSelectionPageState extends State<SeatSelectionPage> {
   int selectedSeatCount = 1;
+
+  double totalPrice = 0;
 
   late Show selectedShow;
   late Movie selectedMovie;
@@ -100,6 +103,8 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
             }
 
             selectedSeatIds.clear();
+
+            totalPrice = 0;
 
             setState(() {
               selectedSeatCount = count;
@@ -174,8 +179,21 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
               ),
             ),
 
-            ///SEAT INDICATOR
-            const SeatIndicator(),
+            ///SEAT INDICATOR + PROCEED SECTION
+            Column(
+              children: [
+                const SeatIndicator(),
+
+                if (selectedSeatIds.isNotEmpty)
+                  SeatBookingSummaryBar(
+                    selectedSeats: selectedSeatIds,
+                    totalPrice: totalPrice,
+                    onProceed: () {
+                      print('Proceed To Next Page');
+                    },
+                  ),
+              ],
+            ),
           ],
         ),
       ),
@@ -247,6 +265,9 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
 
           selectedSeatIds.add(seat.id);
         }
+
+        final sectionPrice = section.category.price;
+        totalPrice = sectionPrice * selectedSeatIds.length;
 
         setState(() {});
 

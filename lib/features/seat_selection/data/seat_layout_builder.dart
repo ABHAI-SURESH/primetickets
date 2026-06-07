@@ -2,6 +2,7 @@ import '../domain/models/seat.dart';
 import '../domain/models/seat_cell.dart';
 import '../domain/models/seat_row.dart';
 import '../domain/models/seat_status.dart';
+import '../domain/models/seat_gap.dart';
 
 class SeatLayoutBuilder {
   static SeatRow buildRow({
@@ -14,8 +15,10 @@ class SeatLayoutBuilder {
     int seatNumber = 1;
 
     for (final item in pattern) {
-      if (item == 'gap') {
-        cells.add(const SeatCell.gap());
+      if (item is SeatGap) {
+        for (int i = 0; i < item.size; i++) {
+          cells.add(const SeatCell.gap());
+        }
       } else if (item is int) {
         for (int i = 0; i < item; i++) {
           final seatId = '$rowLabel$seatNumber';
