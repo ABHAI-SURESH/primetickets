@@ -1,5 +1,28 @@
 import 'package:prime_tickets/features/seat_selection/domain/models/screen.dart';
-import 'package:prime_tickets/features/seat_selection/data/seat_layout_builder.dart';
+import 'package:prime_tickets/features/seat_selection/domain/models/seat_section.dart';
+import 'package:prime_tickets/features/seat_selection/domain/models/seat_category.dart';
+
+import 'seat_layout_builder.dart';
+
+final premiumCategory = SeatCategory(
+  id: 'premium',
+  name: 'Premium',
+  price: 310,
+);
+
+final executiveCategory = SeatCategory(
+  id: 'executive',
+  name: 'Executive',
+  price: 280,
+);
+
+final vipCategory = SeatCategory(id: 'vip', name: 'VIP', price: 450);
+
+final reclinerCategory = SeatCategory(
+  id: 'recliner',
+  name: 'Recliner',
+  price: 650,
+);
 
 final audi1 = Screen(
   id: 'screen_1',
@@ -7,23 +30,17 @@ final audi1 = Screen(
   name: 'Audi 1',
   audioFormat: 'Dolby Atmos',
 
-  rows: [
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'A',
-      pattern: [4, 'gap', 4],
-      categoryId: 'premium',
-    ),
+  sections: [
+    SeatSection(
+      category: premiumCategory,
 
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'B',
-      pattern: [4, 'gap', 4],
-      categoryId: 'premium',
-    ),
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'A', pattern: [4, 'gap', 4]),
 
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'C',
-      pattern: [5, 'gap', 5],
-      categoryId: 'premium',
+        SeatLayoutBuilder.buildRow(rowLabel: 'B', pattern: [4, 'gap', 4]),
+
+        SeatLayoutBuilder.buildRow(rowLabel: 'C', pattern: [5, 'gap', 5]),
+      ],
     ),
   ],
 );
@@ -34,29 +51,37 @@ final audi2 = Screen(
   name: 'Audi 2',
   audioFormat: 'Dolby 7.1',
 
-  rows: [
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'A',
-      pattern: [2, 'gap', 2],
-      categoryId: 'recliner',
+  sections: [
+    SeatSection(
+      category: reclinerCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'A', pattern: [2, 'gap', 2]),
+      ],
     ),
 
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'B',
-      pattern: [3, 'gap', 3],
-      categoryId: 'vip',
+    SeatSection(
+      category: vipCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'B', pattern: [3, 'gap', 3]),
+      ],
     ),
 
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'C',
-      pattern: [4, 'gap', 4],
-      categoryId: 'executive',
+    SeatSection(
+      category: executiveCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'C', pattern: [4, 'gap', 4]),
+      ],
     ),
 
-    SeatLayoutBuilder.buildRow(
-      rowLabel: 'D',
-      pattern: [5, 'gap', 5],
-      categoryId: 'premium',
+    SeatSection(
+      category: premiumCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'D', pattern: [5, 'gap', 5]),
+      ],
     ),
   ],
 );

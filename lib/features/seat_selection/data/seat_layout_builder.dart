@@ -7,7 +7,6 @@ class SeatLayoutBuilder {
   static SeatRow buildRow({
     required String rowLabel,
     required List<dynamic> pattern,
-    required String categoryId,
     List<String> bookedSeats = const [],
   }) {
     final List<SeatCell> cells = [];
@@ -27,7 +26,6 @@ class SeatLayoutBuilder {
                 id: seatId,
                 row: rowLabel,
                 number: seatNumber,
-                categoryId: categoryId,
                 status: bookedSeats.contains(seatId)
                     ? SeatStatus.booked
                     : SeatStatus.available,

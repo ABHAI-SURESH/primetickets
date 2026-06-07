@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/booking_info_bar.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_count_bottom_sheet.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_indicator.dart';
 import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_selection_header.dart';
 import 'package:prime_tickets/features/seat_selection/data/dummy_shows.dart';
 import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
@@ -122,6 +123,9 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
                 });
               },
             ),
+
+            ///SEAT INDICATOR
+            const SeatIndicator(),
 
             /// TEMP PLACEHOLDER
             Expanded(
