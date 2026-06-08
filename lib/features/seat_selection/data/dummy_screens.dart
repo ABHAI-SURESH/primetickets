@@ -66,6 +66,7 @@ final audi1 = Screen(
           rowLabel: 'F',
           pattern: [4, const SeatGap(1), 14],
         ),
+        SeatLayoutBuilder.buildRow(rowLabel: '', pattern: [const SeatGap(1)]),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'E',

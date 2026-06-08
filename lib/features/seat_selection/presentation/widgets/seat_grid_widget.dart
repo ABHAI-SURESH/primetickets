@@ -26,7 +26,7 @@ class SeatGridWidget extends StatelessWidget {
 
         const SizedBox(height: 30),
 
-        const ScreenWidget(),
+        ScreenWidget(screen: screen),
       ],
     );
   }

@@ -32,15 +32,7 @@ class _SeatLayoutWidgetState extends State<SeatLayoutWidget> {
   void initState() {
     super.initState();
 
-    transformController.addListener(() {
-      final matrix = transformController.value;
-
-      print('Scale: ${matrix.getMaxScaleOnAxis()}');
-
-      print('X: ${matrix.storage[12]}');
-
-      print('Y: ${matrix.storage[13]}');
-    });
+    transformController.addListener(() {});
   }
 
   @override
