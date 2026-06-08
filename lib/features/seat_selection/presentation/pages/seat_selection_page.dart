@@ -86,9 +86,9 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
         return SeatCountBottomSheet(
           initialCount: selectedSeatCount,
 
-          seatType: 'Premium',
-
-          seatPrice: 180,
+          categories: selectedScreen.sections
+              .map((section) => section.category)
+              .toList(),
 
           onConfirm: (count) {
             // Clear old selected seats

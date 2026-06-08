@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/seat_selection/domain/models/seat_category.dart';
 
 class SeatCountBottomSheet extends StatefulWidget {
   final int initialCount;
-  final String seatType;
-  final double seatPrice;
+  final List<SeatCategory> categories;
+
   final Function(int) onConfirm;
 
   const SeatCountBottomSheet({
     super.key,
     required this.initialCount,
-    required this.seatType,
-    required this.seatPrice,
+    required this.categories,
+
     required this.onConfirm,
   });
 
@@ -106,11 +107,37 @@ class _SeatCountBottomSheetState extends State<SeatCountBottomSheet> {
             ),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
 
-          Text(
-            '${widget.seatType} • ₹${widget.seatPrice.toInt()}',
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          Row(
+            children: widget.categories.map((category) {
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        category.name,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        '₹${category.price.toInt()}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }).toList(),
           ),
 
           const Spacer(),
