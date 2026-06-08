@@ -14,7 +14,7 @@ class SeatCellWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // GAP
     if (cell.seat == null) {
-      return const SizedBox(width: 24, height: 24);
+      return const SizedBox(width: 20, height: 20);
     }
 
     final seat = cell.seat!;
@@ -47,8 +47,8 @@ class SeatCellWidget extends StatelessWidget {
       onTap: onTap,
 
       child: Container(
-        width: 24,
-        height: 24,
+        width: 20,
+        height: 20,
 
         decoration: BoxDecoration(
           color: backgroundColor,

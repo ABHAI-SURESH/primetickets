@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_layout_constants.dart';
 
 import '../../domain/models/seat_section.dart';
 import 'seat_row_widget.dart';
@@ -16,7 +17,7 @@ class SeatSectionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
 
       children: [
-        const SizedBox(height: 16),
+        const SizedBox(height: SeatLayoutConstants.sectionTopSpacing),
 
         Text(
           '₹${section.category.price.toInt()} '
@@ -29,13 +30,13 @@ class SeatSectionWidget extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: SeatLayoutConstants.sectionTitleBottomSpacing),
 
         ...section.rows.map(
           (row) => SeatRowWidget(row: row, onSeatTap: onSeatTap),
         ),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: SeatLayoutConstants.sectionBottomSpacing),
       ],
     );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:prime_tickets/features/seat_selection/domain/models/screen.dart';
+import '../../domain/models/screen.dart';
 
-import 'seat_section_widget.dart';
-import 'screen_widget.dart';
+import 'seat_grid_widget.dart';
+import 'sticky_row_labels_widget.dart';
 
 class SeatLayoutWidget extends StatelessWidget {
   final Screen screen;
@@ -14,32 +14,32 @@ class SeatLayoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InteractiveViewer(
-      constrained: false,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
 
-      minScale: 0.8,
-      maxScale: 3,
+      children: [
+        /// LABELS
+        SizedBox(width: 32, child: StickyRowLabelsWidget(screen: screen)),
 
-      boundaryMargin: const EdgeInsets.all(500),
+        /// SEATS
+        Expanded(
+          child: InteractiveViewer(
+            constrained: false,
 
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            minScale: 1,
 
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+            maxScale: 3,
 
-          children: [
-            ...screen.sections.map(
-              (section) =>
-                  SeatSectionWidget(section: section, onSeatTap: onSeatTap),
+            boundaryMargin: const EdgeInsets.all(500),
+
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+
+              child: SeatGridWidget(screen: screen, onSeatTap: onSeatTap),
             ),
-
-            const SizedBox(height: 30),
-
-            const ScreenWidget(),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
