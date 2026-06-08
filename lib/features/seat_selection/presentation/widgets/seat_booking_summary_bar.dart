@@ -16,76 +16,28 @@ class SeatBookingSummaryBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.all(16),
-
-      decoration: const BoxDecoration(
-        color: Colors.white,
-
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 10,
-            offset: Offset(0, -2),
-            color: Color(0x14000000),
+      child: GestureDetector(
+        onTap: onProceed,
+        child: Container(
+          width: double.infinity,
+          height: 52,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 134, 214, 170),
+            borderRadius: BorderRadius.circular(16),
           ),
-        ],
-      ),
-
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              mainAxisSize: MainAxisSize.min,
-
-              children: [
-                Text(
-                  '${selectedSeats.length} Seat${selectedSeats.length > 1 ? 's' : ''}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  selectedSeats.join(', '),
-
-                  maxLines: 1,
-
-                  overflow: TextOverflow.ellipsis,
-
-                  style: TextStyle(color: Colors.grey.shade700, fontSize: 13),
-                ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  '₹${totalPrice.toInt()}',
-
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+          child: Center(
+            child: Text(
+              'Pay ₹${totalPrice.toInt()}',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-
-          const SizedBox(width: 12),
-
-          SizedBox(
-            height: 46,
-
-            child: ElevatedButton(
-              onPressed: onProceed,
-
-              child: const Text('Proceed'),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
