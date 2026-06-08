@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/pages/seat_selection_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:prime_tickets/features/movie_booking/presentaion/widgets/movie_theatre_header.dart';
@@ -145,6 +146,16 @@ class _MovieTheatresPageState extends State<MovieTheatresPage> {
                         return TheatreShowCard(
                           theatre: theatre,
                           theatreShow: show,
+
+                          onShowSelected: (showTime) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    SeatSelectionPage(showId: showTime.showId),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

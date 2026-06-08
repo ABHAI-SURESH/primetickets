@@ -57,30 +57,32 @@ final audi1 = Screen(
     SeatSection(
       category: executiveCategory,
       rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: '', pattern: [const SeatGap(1)]),
+
         SeatLayoutBuilder.buildRow(
           rowLabel: 'G',
-          pattern: [4, const SeatGap(1), 14],
+          pattern: [4, const SeatGap(3), 14],
         ),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'F',
-          pattern: [4, const SeatGap(1), 14],
+          pattern: [4, const SeatGap(3), 14],
         ),
         SeatLayoutBuilder.buildRow(rowLabel: '', pattern: [const SeatGap(1)]),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'E',
-          pattern: [4, const SeatGap(1), 14],
+          pattern: [4, const SeatGap(3), 14],
         ),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'D',
-          pattern: [4, const SeatGap(1), 14],
+          pattern: [4, const SeatGap(3), 14],
         ),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'C',
-          pattern: [4, const SeatGap(1), 14],
+          pattern: [4, const SeatGap(3), 14],
         ),
       ],
     ),
@@ -91,12 +93,12 @@ final audi1 = Screen(
       rows: [
         SeatLayoutBuilder.buildRow(
           rowLabel: 'B',
-          pattern: [4, const SeatGap(1), 12],
+          pattern: [4, const SeatGap(3), 14],
         ),
 
         SeatLayoutBuilder.buildRow(
           rowLabel: 'A',
-          pattern: [4, const SeatGap(1), 12],
+          pattern: [4, const SeatGap(3), 14],
         ),
       ],
     ),

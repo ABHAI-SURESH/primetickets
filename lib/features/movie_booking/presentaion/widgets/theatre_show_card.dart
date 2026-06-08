@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/theatre/domain/models/show_time.dart';
 
 import 'package:prime_tickets/features/theatre/domain/models/theatre.dart';
 import 'package:prime_tickets/features/theatre/domain/models/theatre_show.dart';
@@ -7,11 +8,13 @@ import 'package:prime_tickets/features/theatre/presentation/widgets/showtime_gri
 class TheatreShowCard extends StatelessWidget {
   final Theatre theatre;
   final TheatreShow theatreShow;
+  final Function(ShowTime)? onShowSelected;
 
   const TheatreShowCard({
     super.key,
     required this.theatre,
     required this.theatreShow,
+    required this.onShowSelected,
   });
 
   @override
@@ -37,7 +40,10 @@ class TheatreShowCard extends StatelessWidget {
 
           const SizedBox(height: 14),
 
-          ShowtimeGrid(shows: theatreShow.showTimes),
+          ShowtimeGrid(
+            shows: theatreShow.showTimes,
+            onShowSelected: onShowSelected,
+          ),
         ],
       ),
     );
