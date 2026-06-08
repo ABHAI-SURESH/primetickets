@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:prime_tickets/features/seat_selection/domain/models/seat_cell.dart';
 import 'package:prime_tickets/features/seat_selection/domain/models/seat_status.dart';
+import 'package:prime_tickets/features/seat_selection/presentation/widgets/seat_layout_constants.dart';
 
 class SeatCellWidget extends StatelessWidget {
   final SeatCell cell;
@@ -14,7 +15,10 @@ class SeatCellWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // GAP
     if (cell.seat == null) {
-      return const SizedBox(width: 20, height: 20);
+      return const SizedBox(
+        width: SeatLayoutConstants.seatSize,
+        height: SeatLayoutConstants.seatSize,
+      );
     }
 
     final seat = cell.seat!;
@@ -47,8 +51,8 @@ class SeatCellWidget extends StatelessWidget {
       onTap: onTap,
 
       child: Container(
-        width: 20,
-        height: 20,
+        width: SeatLayoutConstants.seatSize,
+        height: SeatLayoutConstants.seatSize,
 
         decoration: BoxDecoration(
           color: backgroundColor,
