@@ -16,7 +16,9 @@ class SeatLayoutWidget extends StatefulWidget {
   State<SeatLayoutWidget> createState() => _SeatLayoutWidgetState();
 }
 
-class _SeatLayoutWidgetState extends State<SeatLayoutWidget> {
+class _SeatLayoutWidgetState extends State<SeatLayoutWidget>
+    with SingleTickerProviderStateMixin {
+  ///MOVEMENT TRACKING VARIABLES
   final TransformationController transformController =
       TransformationController();
 
@@ -28,11 +30,35 @@ class _SeatLayoutWidgetState extends State<SeatLayoutWidget> {
     return transformController.value.storage[13];
   }
 
+  ///ZOOM CONTROL VARIABLES
+  late final AnimationController animationController;
+  Animation<Matrix4>? matrixAnimation;
+
   @override
   void initState() {
     super.initState();
 
     transformController.addListener(() {});
+
+    ///ZOOM ANIMATION CONTROLLER
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+
+    animationController.addListener(() {
+      if (matrixAnimation != null) {
+        transformController.value = matrixAnimation!.value;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    ///ZOOM ANIMATION DISPOSE
+    animationController.dispose();
+    transformController.dispose();
+    super.dispose();
   }
 
   @override
@@ -63,11 +89,15 @@ class _SeatLayoutWidgetState extends State<SeatLayoutWidget> {
               child: InteractiveViewer(
                 transformationController: transformController,
 
+                onInteractionEnd: (_) {
+                  _snapZoomIfNeeded();
+                },
+
                 constrained: false,
 
-                minScale: 1,
+                minScale: 0.7,
 
-                maxScale: 3,
+                maxScale: 3.0,
 
                 boundaryMargin: const EdgeInsets.all(500),
 
@@ -88,5 +118,38 @@ class _SeatLayoutWidgetState extends State<SeatLayoutWidget> {
         );
       },
     );
+  }
+
+  ///ZOOM CONTROL FUNCTION
+
+  void _snapZoomIfNeeded() {
+    final currentMatrix = transformController.value;
+
+    final currentScale = currentMatrix.getMaxScaleOnAxis();
+
+    double targetScale = currentScale;
+
+    if (currentScale < 0.8) {
+      targetScale = 1;
+    }
+
+    if (currentScale > 3.0) {
+      targetScale = 2.5;
+    }
+
+    if (targetScale == currentScale) {
+      return;
+    }
+
+    final Matrix4 targetMatrix = Matrix4.copy(currentMatrix);
+
+    targetMatrix.scale(targetScale / currentScale);
+
+    matrixAnimation = Matrix4Tween(begin: currentMatrix, end: targetMatrix)
+        .animate(
+          CurvedAnimation(parent: animationController, curve: Curves.easeOut),
+        );
+
+    animationController.forward(from: 0);
   }
 }
