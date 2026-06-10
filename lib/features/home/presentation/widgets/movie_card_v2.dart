@@ -17,7 +17,7 @@ class FeaturedMovieCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
 
-        child: Image.asset(movie.imagePath, fit: BoxFit.cover),
+        child: Image.asset(movie.bannerPath, fit: BoxFit.cover),
       ),
     );
   }

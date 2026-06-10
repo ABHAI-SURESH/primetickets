@@ -19,8 +19,9 @@ class FeaturedMovieInfo extends StatelessWidget {
         children: [
           Text(
             movie.title,
+            textAlign: TextAlign.center,
 
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
 
           const SizedBox(height: 12),

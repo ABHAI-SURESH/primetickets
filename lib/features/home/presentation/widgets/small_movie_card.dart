@@ -37,7 +37,7 @@ class SmallMovieCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
 
           child: Image.asset(
-            movie.imagePath,
+            movie.posterPath,
 
             fit: BoxFit.cover,
 

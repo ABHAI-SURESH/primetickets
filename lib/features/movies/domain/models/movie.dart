@@ -4,7 +4,13 @@ class Movie {
   final String id;
 
   final String title;
-  final String imagePath;
+
+  final String posterPath;
+  final String bannerPath;
+  final bool isReleased;
+  final bool showInHomeBanner;
+
+  final bool showInUpcomingSection;
   final DateTime releaseDate;
   final String genre;
   final String duration;
@@ -23,7 +29,14 @@ class Movie {
   Movie({
     required this.id,
     required this.title,
-    required this.imagePath,
+
+    required this.posterPath,
+    required this.bannerPath,
+
+    required this.isReleased,
+    required this.showInHomeBanner,
+    required this.showInUpcomingSection,
+
     required this.releaseDate,
     required this.genre,
     required this.duration,

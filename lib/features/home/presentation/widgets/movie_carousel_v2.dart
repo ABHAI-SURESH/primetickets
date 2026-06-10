@@ -17,13 +17,17 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
   late int currentIndex;
 
+  final featuredMovies = dummyMovies
+      .where((movie) => movie.isReleased && movie.showInHomeBanner)
+      .toList();
+
   @override
   void initState() {
     super.initState();
 
     _controller = PageController(viewportFraction: 0.92, initialPage: 1000);
 
-    currentIndex = 1000 % dummyMovies.length;
+    currentIndex = 1000 % featuredMovies.length;
   }
 
   @override
@@ -34,7 +38,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final movie = dummyMovies[currentIndex];
+    final movie = featuredMovies[currentIndex];
 
     return Column(
       children: [
@@ -46,12 +50,12 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
             onPageChanged: (index) {
               setState(() {
-                currentIndex = index % dummyMovies.length;
+                currentIndex = index % featuredMovies.length;
               });
             },
 
             itemBuilder: (context, index) {
-              final movie = dummyMovies[index % dummyMovies.length];
+              final movie = featuredMovies[index % featuredMovies.length];
 
               return FeaturedMovieCard(movie: movie);
             },

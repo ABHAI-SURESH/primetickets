@@ -66,6 +66,8 @@ flutter:
   assets:
   - assets/images/
   - assets/images/movies/
+  - assets/images/movies/posters/
+  - assets/images/movies/banners/
   - assets/images/cast/
   - assets/images/crew/
   - assets/images/locations/

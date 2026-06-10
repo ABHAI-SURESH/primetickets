@@ -8,7 +8,10 @@ class MovieHorizontalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final movies = dummyMovies;
+    final upcomingMovies = dummyMovies
+        .where((movie) => !movie.isReleased && movie.showInUpcomingSection)
+        .toList();
+
     return SizedBox(
       height: 250,
       child: ListView.separated(
@@ -16,14 +19,12 @@ class MovieHorizontalList extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 20),
 
-        itemCount: movies.length,
+        itemCount: upcomingMovies.length,
 
         separatorBuilder: (_, __) => const SizedBox(width: 16),
 
         itemBuilder: (context, index) {
-          final movie = movies[index];
-
-          return SmallMovieCard(movie: movie);
+          return SmallMovieCard(movie: upcomingMovies[index]);
         },
       ),
     );

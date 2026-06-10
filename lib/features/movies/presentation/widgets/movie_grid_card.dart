@@ -33,7 +33,7 @@ class MovieGridCard extends StatelessWidget {
                   top: Radius.circular(18),
                 ),
                 child: Image.asset(
-                  movie.imagePath,
+                  movie.posterPath,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),

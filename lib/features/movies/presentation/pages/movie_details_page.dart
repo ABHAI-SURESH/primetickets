@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_tickets/features/movie_booking/presentaion/pages/movie_theatres_page.dart';
+import 'package:prime_tickets/features/movies/data/dummy_movies.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_background.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_book_tickets_button.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_people_section.dart';
@@ -9,18 +10,26 @@ import 'package:prime_tickets/features/movies/presentation/widgets/movie_poster_
 import 'package:prime_tickets/features/movies/domain/models/movie.dart';
 import 'package:prime_tickets/features/movies/presentation/widgets/movie_description.dart';
 
-class MovieDetailsPage extends StatelessWidget {
+class MovieDetailsPage extends StatefulWidget {
   final Movie movie;
 
   const MovieDetailsPage({super.key, required this.movie});
 
+  @override
+  State<MovieDetailsPage> createState() => _MovieDetailsPageState();
+}
+
+class _MovieDetailsPageState extends State<MovieDetailsPage> {
+  final releasedMovies = dummyMovies
+      .where((movie) => movie.isReleased)
+      .toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           ///BACKGROUND (ONLY ONCE)
-          MovieBackground(imagePath: movie.imagePath),
+          MovieBackground(imagePath: widget.movie.posterPath),
 
           ///CONTENT
           SafeArea(
@@ -47,7 +56,7 @@ class MovieDetailsPage extends StatelessWidget {
                   const SizedBox(height: 10),
 
                   ///POSTER CARD
-                  MoviePosterCard(imagePath: movie.imagePath),
+                  MoviePosterCard(imagePath: widget.movie.bannerPath),
 
                   const SizedBox(height: 8),
 
@@ -55,8 +64,8 @@ class MovieDetailsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MovieGenreRating(
-                      genre: movie.genre,
-                      rating: movie.rating,
+                      genre: widget.movie.genre,
+                      rating: widget.movie.rating,
                     ),
                   ),
 
@@ -66,7 +75,7 @@ class MovieDetailsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      movie.title.toUpperCase(),
+                      widget.movie.title.toUpperCase(),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 26,
@@ -81,10 +90,10 @@ class MovieDetailsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: MovieMetaInfo(
-                      certificate: movie.certificate,
-                      language: movie.languages.first,
-                      duration: movie.duration,
-                      releaseDate: movie.releaseDate,
+                      certificate: widget.movie.certificate,
+                      language: widget.movie.languages.first,
+                      duration: widget.movie.duration,
+                      releaseDate: widget.movie.releaseDate,
                     ),
                   ),
 
@@ -93,18 +102,20 @@ class MovieDetailsPage extends StatelessWidget {
                   ///DESCRIPTION
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: MovieDescription(description: movie.description),
+                    child: MovieDescription(
+                      description: widget.movie.description,
+                    ),
                   ),
 
                   const SizedBox(height: 20),
 
                   ///CAST SECTION
-                  PeopleSection(title: 'Cast', people: movie.cast),
+                  PeopleSection(title: 'Cast', people: widget.movie.cast),
 
                   const SizedBox(height: 4),
 
                   ///CREW SECTION
-                  PeopleSection(title: 'Crew', people: movie.crew),
+                  PeopleSection(title: 'Crew', people: widget.movie.crew),
 
                   const SizedBox(height: 4),
                 ],
@@ -119,7 +130,9 @@ class MovieDetailsPage extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => MovieTheatresPage(movie: movie)),
+            MaterialPageRoute(
+              builder: (_) => MovieTheatresPage(movie: widget.movie),
+            ),
           );
         },
       ),
