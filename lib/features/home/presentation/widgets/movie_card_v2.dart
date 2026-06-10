@@ -11,13 +11,16 @@ class FeaturedMovieCard extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return Container(
-      width: width * 0.92,
+      width: width * 0.9,
       margin: const EdgeInsets.symmetric(horizontal: 8),
 
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
 
-        child: Image.asset(movie.bannerPath, fit: BoxFit.cover),
+        child: AspectRatio(
+          aspectRatio: 2 / 1,
+          child: Image.asset(movie.bannerPath, fit: BoxFit.cover),
+        ),
       ),
     );
   }

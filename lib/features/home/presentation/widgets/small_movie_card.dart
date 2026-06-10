@@ -16,32 +16,35 @@ class SmallMovieCard extends StatelessWidget {
           MaterialPageRoute(builder: (_) => MovieDetailsPage(movie: movie)),
         );
       },
-      child: Container(
+
+      child: SizedBox(
         width: 150,
 
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+        child: AspectRatio(
+          aspectRatio: 2 / 3,
 
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.12),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(22),
 
-              blurRadius: 14,
-
-              offset: const Offset(0, 8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.12),
+                  blurRadius: 14,
+                  offset: const Offset(0, 8),
+                ),
+              ],
             ),
-          ],
-        ),
 
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(22),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(22),
 
-          child: Image.asset(
-            movie.posterPath,
-
-            fit: BoxFit.cover,
-
-            filterQuality: FilterQuality.high,
+              child: Image.asset(
+                movie.posterPath,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
           ),
         ),
       ),

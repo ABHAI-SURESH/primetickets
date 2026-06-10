@@ -53,12 +53,12 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 24),
 
                   ///POSTER CARD
                   MoviePosterCard(imagePath: widget.movie.bannerPath),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 16),
 
                   ///GENRE AND RATING
                   Padding(
@@ -84,7 +84,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 16),
 
                   ///META INFO
                   Padding(

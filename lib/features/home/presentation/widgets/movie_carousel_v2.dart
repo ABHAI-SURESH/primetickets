@@ -38,12 +38,15 @@ class _MovieCarouselState extends State<MovieCarousel> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final bannerHeight = (screenWidth * 0.92) / 2;
+
     final movie = featuredMovies[currentIndex];
 
     return Column(
       children: [
         SizedBox(
-          height: 220,
+          height: bannerHeight,
 
           child: PageView.builder(
             controller: _controller,

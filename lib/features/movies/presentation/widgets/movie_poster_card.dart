@@ -14,23 +14,24 @@ class MoviePosterCard extends StatelessWidget {
           /// POSTER
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Container(
-              width: double.infinity,
-              height: 250,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+            child: AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
 
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.4),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
                   ),
-                ],
-
-                image: DecorationImage(
-                  image: AssetImage(imagePath),
-                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -38,11 +39,11 @@ class MoviePosterCard extends StatelessWidget {
 
           ///TRAILER BUTTON
           Positioned(
-            bottom: 30,
+            bottom: 20,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.75),
+                color: Colors.black.withOpacity(0.65),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: const Row(
