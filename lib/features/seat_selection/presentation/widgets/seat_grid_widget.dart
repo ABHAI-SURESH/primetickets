@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_tickets/features/seat_selection/domain/extensions/width_finder.dart';
 
 import '../../domain/models/screen.dart';
 import 'seat_section_widget.dart';
@@ -20,8 +21,11 @@ class SeatGridWidget extends StatelessWidget {
 
       children: [
         ...screen.sections.map(
-          (section) =>
-              SeatSectionWidget(section: section, onSeatTap: onSeatTap),
+          (section) => SeatSectionWidget(
+            section: section,
+            widestRowWidth: screen.widestRowWidth,
+            onSeatTap: onSeatTap,
+          ),
         ),
 
         const SizedBox(height: 30),

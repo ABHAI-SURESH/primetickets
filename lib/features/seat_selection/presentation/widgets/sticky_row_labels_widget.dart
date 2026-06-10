@@ -6,6 +6,7 @@ import 'row_label_widget.dart';
 
 class StickyRowLabelsWidget extends StatelessWidget {
   final Screen screen;
+  final double widestRowWidth;
 
   final double scale;
 
@@ -14,6 +15,7 @@ class StickyRowLabelsWidget extends StatelessWidget {
   const StickyRowLabelsWidget({
     super.key,
     required this.screen,
+    required this.widestRowWidth,
     required this.scale,
     required this.translateY,
   });
@@ -50,6 +52,13 @@ class StickyRowLabelsWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 4),
+
+                SizedBox(
+                  width: widestRowWidth,
+                  child: const Divider(color: Colors.transparent),
+                ),
+
                 const SizedBox(
                   height: SeatLayoutConstants.sectionTitleBottomSpacing,
                 ),

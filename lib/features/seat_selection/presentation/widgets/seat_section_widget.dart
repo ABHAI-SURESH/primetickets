@@ -6,10 +6,16 @@ import 'seat_row_widget.dart';
 
 class SeatSectionWidget extends StatelessWidget {
   final SeatSection section;
+  final double widestRowWidth;
 
   final Function(String seatId)? onSeatTap;
 
-  const SeatSectionWidget({super.key, required this.section, this.onSeatTap});
+  const SeatSectionWidget({
+    super.key,
+    required this.section,
+    required this.widestRowWidth,
+    this.onSeatTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,9 @@ class SeatSectionWidget extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
+        const SizedBox(height: 4),
+
+        SizedBox(width: widestRowWidth, child: const Divider()),
 
         const SizedBox(height: SeatLayoutConstants.sectionTitleBottomSpacing),
 
