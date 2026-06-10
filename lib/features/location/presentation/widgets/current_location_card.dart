@@ -20,7 +20,7 @@ class CurrentLocationCard extends StatelessWidget {
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text("Use current location"), Text("Kollayil, India")],
+            children: [Text("Use current location")],
           ),
 
           Spacer(),

@@ -28,14 +28,17 @@ class MovieGridCard extends StatelessWidget {
           children: [
             /// POSTER
             Expanded(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(18),
-                ),
-                child: Image.asset(
-                  movie.posterPath,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+              child: AspectRatio(
+                aspectRatio: 2 / 3,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(18),
+                  ),
+                  child: Image.asset(
+                    movie.posterPath,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

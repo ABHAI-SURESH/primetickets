@@ -19,13 +19,19 @@ class CityList extends StatelessWidget {
 
         return Column(
           children: [
-            GestureDetector(
-              onTap: () => onSelect(city),
+            Material(
+              color: Colors.transparent,
 
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                child: Align(
+              child: InkWell(
+                onTap: () => onSelect(city),
+
+                child: Container(
+                  width: double.infinity,
+
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+
                   alignment: Alignment.centerLeft,
+
                   child: Text(city),
                 ),
               ),
