@@ -18,7 +18,7 @@ class FeaturedMovieInfo extends StatelessWidget {
 
         children: [
           Text(
-            movie.title,
+            movie.title.toUpperCase(),
             textAlign: TextAlign.center,
 
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),

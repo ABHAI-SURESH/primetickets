@@ -31,6 +31,7 @@ final List<String> allCities = [
   "Nagercoil",
   "Palakkad",
   "Pathanamthitta",
+  "Panachamoodu",
   "Salem",
   "Thrissur",
   "Thoothukudi",

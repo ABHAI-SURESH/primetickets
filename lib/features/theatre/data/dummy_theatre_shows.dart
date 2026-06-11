@@ -73,4 +73,33 @@ final List<TheatreShow> dummyTheatreShows = [
       ),
     ],
   ),
+  TheatreShow(
+    id: 'show_103',
+    theatreId: '53',
+    movieId: '1',
+    date: DateTime.now(),
+
+    showTimes: [
+      ShowTime(
+        showId: 'show_109',
+        time: '02:30 PM',
+        screenName: '4K 3D DOLBY',
+        audioFormat: 'Dolby Atmos',
+      ),
+
+      ShowTime(
+        showId: 'show_110',
+        time: '06:30 PM',
+        screenName: '4K 3D DOLBY',
+        audioFormat: 'Dolby Atmos',
+      ),
+
+      ShowTime(
+        showId: 'show_111',
+        time: '09:30 PM',
+        screenName: '4K 3D DOLBY',
+        audioFormat: 'Dolby Atmos',
+      ),
+    ],
+  ),
 ];

@@ -505,4 +505,13 @@ final List<Theatre> dummyTheatres = [
     country: 'India',
     facilities: standardFacilities,
   ),
+  Theatre(
+    id: '53',
+    name: 'Sri Murugan(Yamuna)Full AC 4K 3D',
+    place: 'Panachamoodu',
+    address: 'Mancode Post Road, Panachamoodu, Tamil Nadu',
+    pincode: '695001',
+    country: 'India',
+    facilities: premiumFacilities,
+  ),
 ];

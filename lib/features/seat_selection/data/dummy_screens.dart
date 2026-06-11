@@ -28,6 +28,23 @@ final reclinerCategory = SeatCategory(
   price: 650,
 );
 
+final platinumCategory = SeatCategory(
+  id: 'platinum',
+  name: 'PLATINUM',
+  price: 150,
+);
+
+final luxury1Category = SeatCategory(
+  id: 'luxury1',
+  name: 'LUXURY 1',
+  price: 240,
+);
+final luxury2Category = SeatCategory(
+  id: 'luxury2',
+  name: 'LUXURY 2',
+  price: 240,
+);
+
 final audi1 = Screen(
   id: 'screen_1',
   theatreId: '1',
@@ -214,5 +231,130 @@ final audi3 = Screen(
     ),
   ],
 );
+final sriMurugan = Screen(
+  id: 'srimurugan',
+  theatreId: '53',
+  name: '4K 3D DOLBY',
+  audioFormat: 'Dolby 7.1',
 
-final List<Screen> dummyScreens = [audi1, audi2, audi3];
+  sections: [
+    SeatSection(
+      category: luxury1Category,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'A',
+          pattern: [const SeatGap(1), 1],
+        ),
+        SeatLayoutBuilder.buildRow(rowLabel: 'B', pattern: [2]),
+        SeatLayoutBuilder.buildRow(rowLabel: 'C', pattern: [2]),
+      ],
+    ),
+
+    SeatSection(
+      category: luxury2Category,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'A',
+          pattern: [1, const SeatGap(4), 2],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'B',
+          pattern: [2, const SeatGap(2), 3],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'C',
+          pattern: [2, const SeatGap(2), 3],
+        ),
+      ],
+    ),
+
+    SeatSection(
+      category: platinumCategory,
+
+      rows: [
+        SeatLayoutBuilder.buildRow(rowLabel: 'A', pattern: [22]),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'B',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'C',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'D',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'E',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'F',
+          pattern: [const SeatGap(4), 5, const SeatGap(3), 6],
+        ),
+        SeatLayoutBuilder.buildRow(rowLabel: '-', pattern: [const SeatGap(1)]),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'G',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'H',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'I',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'J',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'K',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'L',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'M',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'N',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'O',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'P',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'Q',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'R',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'S',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+        SeatLayoutBuilder.buildRow(
+          rowLabel: 'T',
+          pattern: [9, const SeatGap(3), 10],
+        ),
+      ],
+    ),
+  ],
+);
+
+final List<Screen> dummyScreens = [audi1, audi2, audi3, sriMurugan];
