@@ -7,9 +7,7 @@ import 'row_label_widget.dart';
 class StickyRowLabelsWidget extends StatelessWidget {
   final Screen screen;
   final double widestRowWidth;
-
   final double scale;
-
   final double translateY;
 
   const StickyRowLabelsWidget({
@@ -23,55 +21,66 @@ class StickyRowLabelsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
-      child: Transform(
-        alignment: Alignment.topCenter,
+      child: SizedBox(
+        width: 38,
+        height: double.infinity, // Fills parent height — overflow is clipped
+        child: ColoredBox(
+          color: Colors.white.withOpacity(0.95), // Opaque mask behind labels
+          child: OverflowBox(
+            // Allows the inner column to exceed the clipped box height
+            alignment: Alignment.topCenter,
+            maxHeight: double.infinity,
+            child: Transform(
+              alignment: Alignment.topCenter,
+              transform: Matrix4.identity()
+                ..translate(0.0, translateY)
+                ..scale(scale),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (final section in screen.sections) ...[
+                      const SizedBox(
+                        height: SeatLayoutConstants.sectionTopSpacing,
+                      ),
 
-        transform: Matrix4.identity()
-          ..translate(0.0, translateY)
-          ..scale(scale),
+                      // Invisible title placeholder — mirrors SeatGridWidget spacing
+                      Opacity(
+                        opacity: 0,
+                        child: Text(
+                          section.category.name[0],
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
 
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+                      SizedBox(
+                        width: widestRowWidth,
+                        child: const Divider(color: Colors.transparent),
+                      ),
 
-            children: [
-              for (final section in screen.sections) ...[
-                const SizedBox(height: SeatLayoutConstants.sectionTopSpacing),
+                      const SizedBox(
+                        height: SeatLayoutConstants.sectionTitleBottomSpacing,
+                      ),
 
-                /// Invisible title placeholder
-                Opacity(
-                  opacity: 0,
-                  child: Text(
-                    section.category.name[0],
+                      ...section.rows.map(
+                        (row) => RowLabelWidget(rowLabel: row.rowLabel),
+                      ),
 
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey,
-                    ),
-                  ),
+                      const SizedBox(
+                        height: SeatLayoutConstants.sectionBottomSpacing,
+                      ),
+                    ],
+                  ],
                 ),
-                const SizedBox(height: 4),
-
-                SizedBox(
-                  width: widestRowWidth,
-                  child: const Divider(color: Colors.transparent),
-                ),
-
-                const SizedBox(
-                  height: SeatLayoutConstants.sectionTitleBottomSpacing,
-                ),
-
-                ...section.rows.map(
-                  (row) => RowLabelWidget(rowLabel: row.rowLabel),
-                ),
-
-                const SizedBox(
-                  height: SeatLayoutConstants.sectionBottomSpacing,
-                ),
-              ],
-            ],
+              ),
+            ),
           ),
         ),
       ),
